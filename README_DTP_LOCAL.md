@@ -19,7 +19,8 @@ No paid Twenty Cloud account, paid CRM subscription, or paid third-party service
 
 ## Local URLs
 
-- Web UI: `http://127.0.0.1:3020`
+- Web UI on Mac mini: `http://127.0.0.1:3020`
+- Tailnet UI for Steve/mobile: `http://dtp-crm.taild3bcf1.ts.net:3020`
 - Internal server port in the container: `3000`
 
 ## Local compose command
@@ -57,7 +58,7 @@ python3 scripts/dtp-twenty-api.py opportunities
 python3 scripts/dtp-twenty-api.py tasks
 ```
 
-The helper reads the local workspace token from `~/.hudson/twenty-crm/workspace-access-token.txt` and talks to `http://127.0.0.1:3020/rest`.
+The helper reads the local workspace token from `~/.hudson/twenty-crm/workspace-access-token.txt` and talks to `http://127.0.0.1:3020/rest`. Mobile/browser access over Tailscale uses `http://dtp-crm.taild3bcf1.ts.net:3020`.
 
 ## Smoke-test records created
 
@@ -73,3 +74,10 @@ These prove create/list behaviour through the local REST API. They are not polis
 - The first workspace was activated as `Digital Technology Partner CRM`.
 - Twenty seeded example CRM records during workspace initialisation; those need removing or replacing before the CRM is treated as clean operational data.
 - Email/calendar integrations were not connected because that may require additional OAuth/admin choices and must not create financial cost accidentally.
+
+## Steve and Hudson CRM logins
+
+- Steve: `steve.shearman@digitaltechnologypartner.ai`
+- Hudson: `hudson.rebel@ai-with.agency`
+
+Passwords are stored outside the repo in macOS Keychain service `DTP Twenty CRM` and `/Users/hudsonrebel/.hudson/twenty-crm/user-logins.json`. Do not print or commit them.
