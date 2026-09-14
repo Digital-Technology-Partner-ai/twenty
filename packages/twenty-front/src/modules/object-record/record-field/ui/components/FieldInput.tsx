@@ -47,7 +47,11 @@ import { RatingFieldInput } from '@/object-record/record-field/ui/meta-types/inp
 import { TextFieldInput } from '@/object-record/record-field/ui/meta-types/input/components/TextFieldInput';
 import { isFieldText } from '@/object-record/record-field/ui/types/guards/isFieldText';
 
-export const FieldInput = () => {
+export type FieldInputProps = {
+  isTableCell?: boolean;
+};
+
+export const FieldInput = ({ isTableCell = false }: FieldInputProps) => {
   const { fieldDefinition } = useContext(FieldContext);
 
   return (
@@ -73,7 +77,7 @@ export const FieldInput = () => {
       ) : isFieldDateTime(fieldDefinition) ? (
         <DateTimeFieldInput />
       ) : isFieldDate(fieldDefinition) ? (
-        <DateFieldInput />
+        <DateFieldInput isTableCell={isTableCell} />
       ) : isFieldNumber(fieldDefinition) ? (
         <NumberFieldInput />
       ) : isFieldLinks(fieldDefinition) ? (

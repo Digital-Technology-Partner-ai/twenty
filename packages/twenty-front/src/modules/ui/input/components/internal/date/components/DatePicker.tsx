@@ -11,6 +11,11 @@ import { detectCalendarStartDay } from '@/localization/utils/detection/detectCal
 import { DatePickerHeader } from '@/ui/input/components/internal/date/components/DatePickerHeader';
 import { RelativeDatePickerHeader } from '@/ui/input/components/internal/date/components/RelativeDatePickerHeader';
 import {
+  getRapidDatePickerDate,
+  RAPID_DATE_PICKER_TIME_ZONE,
+  type RapidDatePickerOption,
+} from '@/ui/input/components/internal/date/utils/getRapidDatePickerDate';
+import {
   DATE_PICKER_CONTAINER_WIDTH,
   StyledDatePickerContainer,
 } from '@/ui/input/components/internal/date/components/StyledDatePickerContainer';
@@ -96,6 +101,7 @@ type DatePickerProps = {
   keyboardEventsDisabled?: boolean;
   onClear?: () => void;
   hideCalendar?: boolean;
+  showRapidDateActions?: boolean;
 };
 
 // react-datepicker v9 types its props as a discriminated union keyed on
@@ -131,6 +137,7 @@ export const DatePicker = ({
   relativeDate,
   onRelativeDateChange,
   hideHeaderInput,
+  showRapidDateActions = false,
 }: DatePickerProps) => {
   const { theme } = useContext(ThemeContext);
   const plainDate = isDefined(plainDateString)
@@ -173,6 +180,15 @@ export const DatePicker = ({
   const handleClose = (newDate: string) => {
     closeDropdowns();
     onClose?.(newDate);
+  };
+
+  const handleRapidDateSelection = (option: RapidDatePickerOption) => {
+    handleClose(
+      getRapidDatePickerDate({
+        option,
+        timeZone: RAPID_DATE_PICKER_TIME_ZONE,
+      }),
+    );
   };
 
   const handleChangeMonth = (month: number) => {
@@ -307,10 +323,34 @@ export const DatePicker = ({
           />
         </Suspense>
       </div>
+      {showRapidDateActions && (
+        <>
+          <StyledButtonContainer
+            onClick={() => handleRapidDateSelection('TODAY')}
+          >
+            <StyledButtonContent>
+              <MenuItemLeftContent LeftIcon={IconCalendarX} text={t`Today`} />
+            </StyledButtonContent>
+          </StyledButtonContainer>
+          <StyledButtonContainer
+            onClick={() => handleRapidDateSelection('TOMORROW')}
+          >
+            <StyledButtonContent>
+              <MenuItemLeftContent
+                LeftIcon={IconCalendarX}
+                text={t`Tomorrow`}
+              />
+            </StyledButtonContent>
+          </StyledButtonContainer>
+        </>
+      )}
       {clearable && (
         <StyledButtonContainer onClick={handleClear}>
           <StyledButtonContent>
-            <MenuItemLeftContent LeftIcon={IconCalendarX} text={t`Clear`} />
+            <MenuItemLeftContent
+              LeftIcon={IconCalendarX}
+              text={showRapidDateActions ? t`Clear from plan` : t`Clear`}
+            />
           </StyledButtonContent>
         </StyledButtonContainer>
       )}

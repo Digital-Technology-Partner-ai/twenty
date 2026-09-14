@@ -25,6 +25,7 @@ export type DateInputProps = {
   onClear?: () => void;
   onSubmit?: (newDate: Nullable<string>) => void;
   hideHeaderInput?: boolean;
+  showRapidDateActions?: boolean;
 };
 
 export const DateInput = ({
@@ -38,6 +39,7 @@ export const DateInput = ({
   onClear,
   onSubmit,
   hideHeaderInput,
+  showRapidDateActions = false,
 }: DateInputProps) => {
   const store = useStore();
 
@@ -118,6 +120,7 @@ export const DateInput = ({
         onEscape={onEscape}
         onClear={handleClear}
         hideHeaderInput={hideHeaderInput}
+        showRapidDateActions={showRapidDateActions}
       />
     </div>
   );

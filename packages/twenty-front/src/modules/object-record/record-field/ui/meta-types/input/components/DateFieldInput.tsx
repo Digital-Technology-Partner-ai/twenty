@@ -1,5 +1,6 @@
 import { useDateField } from '@/object-record/record-field/ui/meta-types/hooks/useDateField';
 import { DateInput } from '@/ui/field/input/components/DateInput';
+import { shouldShowRapidDatePickerActions } from '@/object-record/record-field/ui/meta-types/input/utils/shouldShowRapidDatePickerActions';
 
 import { FieldInputEventContext } from '@/object-record/record-field/ui/contexts/FieldInputEventContext';
 import { RecordFieldComponentInstanceContext } from '@/object-record/record-field/ui/states/contexts/RecordFieldComponentInstanceContext';
@@ -7,8 +8,14 @@ import { useAvailableComponentInstanceIdOrThrow } from '@/ui/utilities/state/com
 import { useContext } from 'react';
 import { type Nullable } from 'twenty-ui/utilities';
 
-export const DateFieldInput = () => {
-  const { fieldValue, setDraftValue } = useDateField();
+export type DateFieldInputProps = {
+  isTableCell?: boolean;
+};
+
+export const DateFieldInput = ({
+  isTableCell = false,
+}: DateFieldInputProps) => {
+  const { fieldValue, setDraftValue, fieldDefinition } = useDateField();
 
   const { onEnter, onEscape, onClickOutside, onSubmit } = useContext(
     FieldInputEventContext,
@@ -55,6 +62,11 @@ export const DateFieldInput = () => {
       onEscape={handleEscape}
       value={dateValue}
       clearable
+      showRapidDateActions={shouldShowRapidDatePickerActions({
+        isTableCell,
+        objectNameSingular: fieldDefinition.metadata.objectMetadataNameSingular,
+        fieldName: fieldDefinition.metadata.fieldName,
+      })}
       onChange={handleChange}
       onClear={handleClear}
       onSubmit={handleSubmit}

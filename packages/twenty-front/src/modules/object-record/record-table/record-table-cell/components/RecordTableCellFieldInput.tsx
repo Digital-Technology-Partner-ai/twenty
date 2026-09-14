@@ -109,7 +109,7 @@ export const RecordTableCellFieldInput = () => {
         onTab: handleTab,
       }}
     >
-      <FieldInput />
+      <FieldInput isTableCell />
     </FieldInputEventContext.Provider>
   );
 };
