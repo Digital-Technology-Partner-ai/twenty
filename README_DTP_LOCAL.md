@@ -2,6 +2,11 @@
 
 Hudson-installed local Twenty CRM for Digital Technology Partner.
 
+The production CRM runs on Omar at https://crm.digitaltechnologypartner.ai.
+The Mac mini details below describe the original local installation. See
+[the production tooltip patch](packages/twenty-docker/dtp-tooltip-fix/README.md)
+for the current deployment record and rollback instructions.
+
 ## Purpose
 
 This fork is the DTP-controlled copy of the open-source Twenty CRM codebase. The local Mac mini install is intended to become DTP's internal CRM surface, with Hudson able to read/write CRM records directly via API.

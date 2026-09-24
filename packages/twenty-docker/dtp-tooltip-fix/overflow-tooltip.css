@@ -1,0 +1,10 @@
+/* Compatibility patch for the deployed v2.39.5 frontend. */
+/* Keep the app tooltip without WebKit's native truncated-text tooltip. */
+[data-testid='tooltip']._overflowingText_ao50d_16 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  text-overflow: clip;
+}

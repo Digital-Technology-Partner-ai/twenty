@@ -10,6 +10,7 @@ import { AppTooltip, TooltipDelay } from './AppTooltip';
 
 const spacing4 = themeCssVariables.spacing[4];
 
+// Line clamping keeps the ellipsis without Safari adding a second native tooltip.
 const StyledOverflowingMultilineText = styled.div<{
   isContentOverflowing: boolean;
   size: 'large' | 'small';
@@ -25,7 +26,7 @@ const StyledOverflowingMultilineText = styled.div<{
   overflow: hidden;
   text-decoration: inherit;
 
-  text-overflow: ellipsis;
+  text-overflow: clip;
   height: ${({ size }) => (size === 'large' ? spacing4 : 'auto')};
 
   -webkit-line-clamp: ${({ displayedMaxRows }) =>
@@ -49,11 +50,15 @@ const StyledOverflowingText = styled.div<{
   max-width: 100%;
   text-decoration: inherit;
 
-  text-overflow: ellipsis;
+  text-overflow: clip;
   overflow: hidden;
   height: ${({ size }) => (size === 'large' ? spacing4 : 'auto')};
 
-  white-space: nowrap;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  white-space: normal;
+  overflow-wrap: anywhere;
 `;
 
 const StyledPre = styled.pre`
