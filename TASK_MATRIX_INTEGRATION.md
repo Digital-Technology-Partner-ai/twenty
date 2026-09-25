@@ -151,3 +151,15 @@ On verification failure it restores the original Compose and server image.
 
 These files are preparation, not evidence of a completed production rollout.
 The fresh backup and deployment receipt will be recorded after execution.
+
+
+Restricted-role test setup was attempted using a disposable staging user.
+Native sign-in and workspace token exchange succeeded, but the test API session
+returned `Invalid auth context`; denied reads/writes and hidden-field cases are
+therefore still unverified. The original task object permissions were restored,
+all disposable account/membership/role-target rows were deleted, and temporary
+credentials/tokens/cookies were removed. No production state changed.
+
+Production rollout is currently blocked by the locked KeePassXC vault on the
+Mac mini. The fresh pre-deployment backup has not yet been taken. The tested
+image archive is copied to Omar but has not been imported or deployed.
