@@ -11,7 +11,7 @@ fi
 hostname
 date -u +%Y-%m-%dT%H:%M:%SZ
 docker version --format 'Docker server: {{.Server.Version}}'
-docker ps --format '{{.ID}} | {{.Names}} | {{.Image}} | {{.Status}}'
+docker ps --filter "label=com.docker.compose.project.working_dir=$crm_directory" --format '{{.ID}} | {{.Names}} | {{.Image}} | {{.Status}}'
 ls -ld "$crm_directory"
 find "$crm_directory" -maxdepth 1 -type f -printf '%f\n'
 df -h "$crm_directory"
@@ -27,5 +27,8 @@ fi
 for container_id in "${container_ids[@]}"; do
   docker inspect --format '{{.Name}} | image={{.Image}} | service={{index .Config.Labels "com.docker.compose.service"}} | mounts={{range .Mounts}}{{.Type}}:{{.Source}}=>{{.Destination}};{{end}}' "$container_id"
   image_id=$(docker inspect --format '{{.Image}}' "$container_id")
-  docker image inspect --format '{{.Id}} | digests={{json .RepoDigests}} | platform={{.Os}}/{{.Architecture}} | version={{index .Config.Labels "org.opencontainers.image.version"}} | revision={{index .Config.Labels "org.opencontainers.image.revision"}}' "$image_id"
+  docker image inspect --format '{{.Id}} | digests={{json .RepoDigests}} | platform={{.Os}}/{{.Architecture}}' "$image_id"
 done
+
+docker exec dtp-twenty-crm-db-1 sh -c 'psql -U "$POSTGRES_USER" -d "$POSTGRES_DB" -Atc "SELECT current_database(), current_user, version(), pg_size_pretty(pg_database_size(current_database()));"'
+du -sh /var/lib/docker/volumes/dtp-twenty-crm_server-local-data/_data

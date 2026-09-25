@@ -356,6 +356,7 @@ export const StyledScorePill = styled.span<{
     })[tone]};
   font-size: 9px;
   padding: 2px 4px;
+  white-space: nowrap;
 `;
 
 export const StyledCompactRow = styled.button`
@@ -389,12 +390,16 @@ export const StyledMoreButton = styled.button`
 
 export const StyledScorePills = styled.span`
   display: inline-flex;
+  flex-shrink: 0;
   gap: 3px;
 `;
 
 export const StyledDueDate = styled.span`
   color: ${themeCssVariables.font.color.tertiary};
   font-size: 10px;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
 `;
 

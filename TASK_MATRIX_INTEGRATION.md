@@ -2,89 +2,118 @@
 
 ## Status, 25 September 2026
 
-The native frontend implementation and isolated staging configuration are
-prepared locally. Production has not been changed. No new production backup
-has been taken, and no production database has been restored into staging.
+The native matrix is running in a separate test CRM on Hudson's Mac mini:
 
-SSH to `omar@100.126.181.121` now works from Hudson's Mac mini using the existing
-`~/.ssh/id_ed25519_hudson_to_steves_mbp` key. The host identifies itself as
-`omar-macbook-pro`, running Linux. The account has sudo rights, but Docker and
-`/opt/dtp/twenty-crm` require administrator privileges and noninteractive sudo
-requires a password. Direct root SSH with this key is not permitted.
+http://127.0.0.1:3030/objects/tasks?taskLayout=matrix
 
-The remaining blocker is administrator authentication for inventory and backup,
-not SSH connectivity. `inspect-live.sh` in the staging directory provides a
-read-only inventory for an operator to run with sudo. It prints selected image,
-mount and version metadata, never environment values or configuration contents.
+Sign in with the usual CRM credentials. This is a restored copy. Production
+still runs its original image and database on Omar. Deployment waits for
+Hudson's review of staging.
 
-Hudson identified the saved Omar credential in KeePassXC on the Mac mini.
-KeePassXC is open, but its `DTP-Hudson` database is locked; the user has been
-asked to unlock it locally. No password has been copied or recorded. The
-inventory script is available on Omar at
-`/home/omar/.local/share/dtp-matrix/inspect-live.sh`; its SHA-256 matches the
-local copy, and it has not been run with administrator privileges.
+The original checkout and prototype remain unchanged. Work is saved in
+`/Users/hudsonrebel/twenty-matrix-v2395`, branch `codex/task-matrix-v2395`.
 
-## Baseline and scope
+## Backup and isolation
 
-- Branch: `codex/task-matrix-v2395`.
-- Base: `1d73bff4495df5c9592e423cc66256594742480d`, the documented v2.39.5
-  deployment source with the planned-day change.
-- The existing tooltip fix is ported into this release's UI component.
-- The original prototype and unrelated changes remain in the original checkout.
-- No database entity, GraphQL schema, or migration is changed.
+Administrator access used the authorized Omar credential from unlocked
+KeePassXC. It was passed through memory and SSH standard input, never printed
+or saved in source files. No SSH, sudo or authentication policy was changed.
 
-Tasks now have a Standard view / Impact & effort switch. The matrix mode is
-selected with `taskLayout=matrix` in the URL; existing view filters and sorts
-continue to apply. The standard view remains available.
+- Production host: `omar@100.126.181.121`, Linux/AMD64.
+- Production image: `dtp-twenty-tooltip:20260924`, immutable identity
+  `sha256:db6e106694e70c52ae37b608b28e95394293a501a1680a4848e8f849686dc537`.
+- Database: PostgreSQL 16.14, database `default`, user `twenty`.
+- Redis: 7.4.9.
+- Server backup: `/var/backups/dtp-twenty/matrix-20260925T194420Z.tar`.
+- Mac mini backup: `/Users/hudsonrebel/.local/share/dtp-matrix-staging/matrix-20260925T194420Z.tar`.
+- Archive SHA-256:
+  `2326a93a06a8a9469a94f052bb19b54e88199ac12165a8190f05b6d08a4088ca`.
 
-The matrix reads task fields and all GTD options from readable workspace
-metadata. Project and GTD filters support select all, clear all, search, and
-untagged/unassigned-project tasks. Equal-score tasks are grouped and unscored
-tasks have a separate tray. The board has four backgrounds while retaining
-low/medium/high score positions. Project colors are assigned consistently by
-project ID within the matrix.
+The backup includes a custom-format database dump, database globals,
+attachments, deployment configuration and a private container inventory.
+Files and secrets remain outside Git in restricted directories. All archive
+checksums verified after transfer. Before app startup, all 107 restored table
+counts matched the backup inventory and all 73 attachment hashes matched.
+Attachment hashes were unchanged throughout the live backup. Production
+remained available during the backup.
 
-Clicking a task opens Twenty's existing record side panel, or its native task
-page on mobile. Editing uses Twenty's existing fields, permissions, mutations,
-and cache. It does not use the prototype's sample-data editor. Native field
-appearance comes from the workspace's field configuration.
+Staging has independent database and attachment volumes and a fresh Redis.
+There is no worker. Migrations, cron registration, outbound email, mail/calendar
+integrations, telemetry and database configuration overrides are disabled.
+The CRM, database and Redis share only a Docker-internal network. Runtime
+connection attempts from the final CRM container to Internet and Omar test
+endpoints failed as expected. A fixed nginx gateway publishes only
+`127.0.0.1:3030`. It forwards exclusively to staging.
+
+The exact production application and PostgreSQL images were imported.
+Redis's AMD64 binaries failed under QEMU, so staging uses the same Redis 7.4.9
+release for ARM64. This is a recorded test-environment difference. The
+application still runs the production AMD64 backend with the new frontend.
+
+Final staging image, `dtp-twenty-matrix:staging-20260925`:
+`sha256:dc833b3427921f3f0950dc9e6e4421c9aad68153088d03558f8f7b3142f9a42a`.
+The production health endpoint was checked again after staging tests and returned
+healthy.
+
+## Implementation
+
+Base commit: `1d73bff4495df5c9592e423cc66256594742480d`, the documented
+v2.39.5 deployment source with the planned-day change. The tooltip fix is
+included. No database entity, GraphQL schema or migration was changed.
+
+Tasks have a Standard view / Impact & effort switch. Matrix mode uses
+`taskLayout=matrix`; existing view filters and sorting continue to apply.
+It reads task fields and all GTD options from readable workspace metadata.
+Project and GTD filters include select all, clear all, search and unassigned
+values. Equal scores are grouped, with a separate Unscored tray. Four quadrant
+backgrounds retain low/medium/high score positions.
+
+Clicking a card opens Twenty's existing record side panel, or its native task
+page on mobile. Edits use existing permissions, field controls, mutations and
+cache. Native field appearance follows workspace metadata. The prototype's
+sample editor is not used. This Twenty release offers Delete Task, which moves
+records to trash; it has no separate Archive action.
+
+Production browser testing caught missing translation catalog entries. The
+English catalog and compiled catalogs now include the new labels. Untranslated
+locales fall back to English. Narrow cards keep score pills on one line.
 
 ## Validation
 
-- 55 tests pass across 11 suites, covering matrix interaction, adapter, metadata,
-  pagination, retry and existing record-index behavior.
-- Pagination fixture exercises 425 records across three pages.
-- Scoped type-aware lint and full frontend TypeScript check.
-- Production frontend build using the exact release dependencies.
-- Browser checks use the real React matrix with synthetic fixtures. They cover
-  desktop, short and narrow viewports, all 11 GTD labels plus No tags, and task
-  opening from the unscored dialog. These do not establish live API compatibility.
+- 55 tests passed across 11 matrix and record-index suites.
+- Pagination exercised 425 records across three pages.
+- Required frontend lint and full TypeScript checks passed.
+- Production frontend build passed.
+- Synthetic browser checks covered desktop, short and narrow viewports.
+- Restored metadata matched all expected fields and all 11 GTD choices.
+- Native browser creation and editing passed for title, body, assignee,
+  project, effort, impact, GTD tags, due date/time, planned day, status, next
+  owner, task type and waiting-on/blocker. Values persisted after reload and
+  were checked in the staging database.
+- Cards updated after native edits. Project select/clear all, GTD select/clear
+  all, all 11 tags plus No tags, OR matching, outside-click dismissal and the
+  standard table view passed.
+- Table Planned Day shortcuts Today, Tomorrow and Clear from plan passed,
+  including persistence. Due-date editing retained its normal picker.
+- Native deletion removed the disposable test task from the matrix and set its
+  trash timestamp. The test record remains only in staging trash.
+- The original staging account password hash was restored after a temporary
+  staging-only test login. The temporary credential file was removed.
 
-Server-backed acceptance remains outstanding: save every editable task field,
-reload to verify persistence, check permissions with a restricted user, change
-scores/projects/tags and verify matrix updates, archive/delete sample tasks,
-and confirm the standard views still work.
+User review, testing with a restricted-permission account and final deployment
+checks remain before production rollout. Background integrations are
+intentionally not exercised in staging. Attachment contents were verified by
+hash; a browser upload/download check remains part of final acceptance.
 
-## Remaining deployment sequence
+## After review
 
-1. Inventory the live image digest, source revision, database version, storage,
-   worker configuration, custom fields and existing patches using read-only
-   server commands.
-2. Take a consistent database dump and back up attachments and deployment
-   configuration. Keep secrets outside Git with restricted file permissions.
-   Record checksums, time, PostgreSQL version and live image digest.
-3. Restore the dump and attachments into the separate staging volumes, with
-   outbound integrations disabled and network isolation verified. Verify the
-   restore, schema, row counts and representative attachment hashes.
-4. Build the frontend overlay against the verified server image and start
-   staging. Use the staging-only URL and database. Perform the acceptance tests
-   above, including planned-day and tooltip regressions.
-5. Let Hudson review the working staging matrix. Production deployment follows
-   that review, using a fresh pre-deployment backup and the exact tested image.
-6. Deploy code onto the existing live database, never the staging database.
-   Verify health and task operations. Keep the previous image available for a
-   code-only rollback that preserves current live data.
+1. Address review findings and complete remaining acceptance checks.
+2. Take a fresh pre-deployment database, attachment and configuration backup.
+3. Deploy the exact tested frontend-overlay image onto the existing live
+   database and storage. Never replace production data with staging data.
+4. Verify production health and task operations. Keep the current production
+   image available for a code-only rollback that preserves live data.
 
-See `packages/twenty-docker/dtp-matrix-staging/README.md` for the staging
-configuration and restore steps. Its required image and backup inputs must be
-verified before use.
+See `packages/twenty-docker/dtp-matrix-staging/README.md` for staging commands,
+image identities and recovery details. Private runtime inputs and logs are in
+`/Users/hudsonrebel/.local/share/dtp-matrix-staging`.

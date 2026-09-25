@@ -312,6 +312,9 @@ msgstr "{0} tentativas"
 #. js-lingui-id: fvImQM
 #. placeholder {0}: formatNumber(contextStoreNumberOfSelectedRecords)
 #. placeholder {0}: formatNumber(totalCount ?? 0)
+#. placeholder {0}: selectedProjectIds.size
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixGtdFilter.tsx
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixProjectSidebar.tsx
 #: src/modules/object-record/record-index/components/RecordIndexPageHeader.tsx
 #: src/modules/side-panel/components/SidePanelMultipleRecordsInfo.tsx
 msgid "{0} selected"
@@ -1394,6 +1397,11 @@ msgstr "Adicionar provedor personalizado"
 msgid "Add details for guests"
 msgstr "Adicione detalhes para os convidados."
 
+#. js-lingui-id: /3MdMZ
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrix.tsx
+msgid "Add effort or impact to place these tasks"
+msgstr ""
+
 #. js-lingui-id: WT0Ie4
 #: src/modules/settings/workspace/components/SettingsWorkspaceEmailGroupSection.tsx
 msgid "Add email channel"
@@ -2154,6 +2162,12 @@ msgstr "Todos os objetos já estão na barra lateral"
 msgid "All operations"
 msgstr "Todas as operações"
 
+#. js-lingui-id: zG6Ooi
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixProjectSidebar.tsx
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixProjectSidebar.tsx
+msgid "All projects"
+msgstr ""
+
 #. js-lingui-id: gqXMNe
 #: src/modules/settings/unsubscribers/components/filter-dropdown/SettingsUnsubscribersFilterDropdown.tsx
 msgid "All reasons"
@@ -2168,6 +2182,11 @@ msgstr "Todas as Funções"
 #: src/modules/navigation-menu-item/edit/side-panel/components/SidePanelNewSidebarItemObjectSystemPickerSubPage.tsx
 msgid "All system objects are already in the sidebar"
 msgstr "Todos os objetos do sistema já estão na barra lateral"
+
+#. js-lingui-id: 2QM24L
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixGtdFilter.tsx
+msgid "All tags"
+msgstr ""
 
 #. js-lingui-id: p+lpde
 #: src/modules/activities/tasks/components/TaskGroupsContent.tsx
@@ -4097,6 +4116,16 @@ msgstr "Escolha se este tipo de atividade aparece nas linhas do tempo dos regist
 msgid "Choose which profile fields users with the Edit Profile permission can modify"
 msgstr "Escolha quais campos de perfil os usuários com a permissão Editar Perfil podem alterar"
 
+#. js-lingui-id: 9rhd8g
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrix.tsx
+msgid "Choose your GTD tags"
+msgstr ""
+
+#. js-lingui-id: N5JY+R
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrix.tsx
+msgid "Choose your projects"
+msgstr ""
+
 #. js-lingui-id: 3wV73y
 #: src/modules/object-metadata/hooks/useSortSubFieldChoicesForField.ts
 #: src/modules/object-record/record-field/ui/form-types/components/FormAddressFieldInput.tsx
@@ -4153,6 +4182,12 @@ msgstr "Links de instalação do Claude exigem uma URL MCP HTTPS."
 msgid "Clear"
 msgstr "Limpar"
 
+#. js-lingui-id: yYxB17
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixGtdFilter.tsx
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixProjectSidebar.tsx
+msgid "Clear all"
+msgstr ""
+
 #. js-lingui-id: Q2mGA7
 #: src/modules/page-layout/widgets/timeline/components/WidgetActionTimelineFilter.tsx
 msgid "Clear filter"
@@ -4163,6 +4198,11 @@ msgstr "Limpar filtro"
 #: src/modules/settings/unsubscribers/components/filter-dropdown/SettingsUnsubscribersFilterMenuContent.tsx
 msgid "Clear filters"
 msgstr "Limpar filtros"
+
+#. js-lingui-id: pZfkSi
+#: src/modules/ui/input/components/internal/date/components/DatePicker.tsx
+msgid "Clear from plan"
+msgstr ""
 
 #. js-lingui-id: wu0RfR
 #: src/modules/settings/admin-panel/config-variables/components/ConfigVariableHelpText.tsx
@@ -4265,6 +4305,7 @@ msgid "Clipboard requires a secure connection (HTTPS). Please access this app ov
 msgstr "A área de transferência requer uma conexão segura (HTTPS). Acesse este aplicativo via HTTPS para habilitar a cópia."
 
 #. js-lingui-id: yz7wBu
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixModal.tsx
 #: src/modules/ai/components/AiChatCloseButton.tsx
 #: src/modules/ui/feedback/snack-bar-manager/components/SnackBar.tsx
 msgid "Close"
@@ -7046,6 +7087,7 @@ msgid "Don't sync emails from team@ support@ noreply@..."
 msgstr "Não sincronize e-mails de team@ support@ noreply@..."
 
 #. js-lingui-id: DPfwMq
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixGtdFilter.tsx
 #: src/modules/page-layout/widgets/fields/components/FieldsConfigurationGroupRenameInput.tsx
 msgid "Done"
 msgstr "Concluído"
@@ -7444,6 +7486,11 @@ msgstr "Campos de perfil editáveis"
 #: src/pages/settings/logic-functions/SettingsLogicFunctionDetail.tsx
 msgid "Editor"
 msgstr "Editor"
+
+#. js-lingui-id: 5izQDs
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixCard.tsx
+msgid "Effort:"
+msgstr ""
 
 #. js-lingui-id: hpAStM
 #: src/modules/object-record/record-merge/utils/getPositionWordLabel.ts
@@ -8082,6 +8129,11 @@ msgstr "Entradas ({0})"
 #: src/modules/settings/billing/constants/SettingsBillingPlanComparisonRows.ts
 msgid "Environments"
 msgstr "Ambientes"
+
+#. js-lingui-id: rgt1Q0
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrix.tsx
+msgid "Equal scores are grouped"
+msgstr ""
 
 #. js-lingui-id: BlLvRP
 #: src/modules/settings/security/components/SettingsSecuritySettings.tsx
@@ -9294,6 +9346,11 @@ msgstr "filtragem"
 msgid "Filters"
 msgstr "Filtros"
 
+#. js-lingui-id: ddT5xi
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixProjectSidebar.tsx
+msgid "Find a project"
+msgstr ""
+
 #. js-lingui-id: YTaTdm
 #: src/modules/ai/constants/crud-tool-operation-verbs.constant.ts
 msgid "Finding {objectLabel}"
@@ -9907,6 +9964,12 @@ msgstr "{objectLabel} agrupado"
 msgid "Grouping {objectLabel}"
 msgstr "Agrupando {objectLabel}"
 
+#. js-lingui-id: k4TsF1
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixCard.tsx
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixGtdFilter.tsx
+msgid "GTD tags"
+msgstr ""
+
 #. js-lingui-id: R4r4XO
 #: src/modules/activities/calendar/components/CalendarEventComposerFields.tsx
 #: src/modules/activities/calendar/components/CalendarEventComposerFields.tsx
@@ -10095,6 +10158,16 @@ msgstr "Ocultar rótulo"
 #: src/modules/settings/data-model/object-details/components/tabs/SettingsObjectIndexesSection.tsx
 msgid "Hide system indexes"
 msgstr "Ocultar índices do sistema"
+
+#. js-lingui-id: hNu6zj
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixAxes.tsx
+msgid "High effort"
+msgstr ""
+
+#. js-lingui-id: DvATQ+
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixAxes.tsx
+msgid "High impact"
+msgstr ""
 
 #. js-lingui-id: 1ETc0T
 #: src/pages/settings/community/SettingsCommunity.tsx
@@ -10434,6 +10507,22 @@ msgstr "Nome de usuário IMAP (opcional)"
 #: src/modules/settings/accounts/components/SettingsAccountsConnectionForm.tsx
 msgid "imap.example.com"
 msgstr "imap.example.com"
+
+#. js-lingui-id: amdG6B
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrix.tsx
+#: src/modules/object-record/record-index/components/RecordIndexContainer.tsx
+msgid "Impact & effort"
+msgstr ""
+
+#. js-lingui-id: AixQJ4
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrix.tsx
+msgid "Impact and effort matrix"
+msgstr ""
+
+#. js-lingui-id: rcP5ad
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixCard.tsx
+msgid "Impact:"
+msgstr ""
 
 #. js-lingui-id: tSVr6t
 #: src/modules/settings/members/components/MemberInfosTab.tsx
@@ -11942,6 +12031,11 @@ msgstr "Carregando configuração de retenção..."
 msgid "Loading skills..."
 msgstr "Carregando habilidades..."
 
+#. js-lingui-id: SFzEw4
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixContainer.tsx
+msgid "Loading tasks…"
+msgstr ""
+
 #. js-lingui-id: 7YK6ap
 #: src/modules/page-layout/widgets/email-thread/components/EmailThreadWidget.tsx
 msgid "Loading thread"
@@ -12072,6 +12166,16 @@ msgstr "Pesquisar"
 msgid "loop"
 msgstr "loop"
 
+#. js-lingui-id: pTrbBt
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixAxes.tsx
+msgid "Low effort"
+msgstr ""
+
+#. js-lingui-id: yW2pVl
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixAxes.tsx
+msgid "Low impact"
+msgstr ""
+
 #. js-lingui-id: MsaCqr
 #: src/modules/settings/accounts/components/SettingsAccountsConnectionForm.tsx
 msgid "Mail Account"
@@ -12086,6 +12190,11 @@ msgstr "Manutenção"
 #: src/modules/settings/admin-panel/health-status/maintenance-mode/components/SettingsAdminMaintenanceMode.tsx
 msgid "Maintenance mode"
 msgstr "Modo de manutenção"
+
+#. js-lingui-id: 0Wz8KB
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixAxes.tsx
+msgid "Major projects"
+msgstr ""
 
 #. js-lingui-id: MOLprz
 #: src/modules/settings/roles/role-permissions/permission-flags/hooks/useActionRolePermissionFlagConfig.ts
@@ -12359,6 +12468,16 @@ msgstr "Eu"
 #: src/modules/settings/roles/role-permissions/object-level-permissions/record-level-permissions/components/SettingsRolePermissionsObjectLevelRecordLevelPermissionMeValueSelect.tsx
 msgid "Me (User ID)"
 msgstr "Eu (ID do Usuário)"
+
+#. js-lingui-id: Rn4Hk/
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixAxes.tsx
+msgid "Medium effort"
+msgstr ""
+
+#. js-lingui-id: Lcmbjz
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixAxes.tsx
+msgid "Medium impact"
+msgstr ""
 
 #. js-lingui-id: IAcjOi
 #: src/modules/advanced-text-editor/extensions/slash-command/DefaultSlashCommands.ts
@@ -13506,6 +13625,11 @@ msgstr "Nenhum registro excluído correspondente aos critérios do filtro foi en
 msgid "No description available for this application"
 msgstr "Nenhuma descrição disponível para este aplicativo"
 
+#. js-lingui-id: VXh9CK
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixCard.tsx
+msgid "No due date"
+msgstr ""
+
 #. js-lingui-id: mINrlz
 #: src/modules/activities/emails/components/EmptyInboxPlaceholder.tsx
 msgid "No email exchange has occurred with this record yet."
@@ -13639,6 +13763,11 @@ msgstr "Ainda não há logs"
 msgid "No matching activity"
 msgstr "Nenhuma atividade correspondente"
 
+#. js-lingui-id: zfB5Bv
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrix.tsx
+msgid "No matching tasks"
+msgstr ""
+
 #. js-lingui-id: UwvrGq
 #: src/pages/settings/members/tabs/SettingsWorkspaceMembersTeamTab.tsx
 msgid "No members"
@@ -13731,6 +13860,12 @@ msgstr "Nenhuma permissão configurada para este aplicativo."
 #: src/modules/settings/roles/role-permissions/object-level-permissions/components/SettingsRolePermissionsObjectLevelSection.tsx
 msgid "No permissions have been set for individual objects."
 msgstr "Nenhuma permissão foi definida para objetos individuais."
+
+#. js-lingui-id: /v4YhC
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrix.tsx
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixCard.tsx
+msgid "No project"
+msgstr ""
 
 #. js-lingui-id: pRxlf6
 #: src/pages/settings/applications/utils/getClaimErrorContent.ts
@@ -13874,6 +14009,12 @@ msgstr "Nenhum objeto do sistema disponível"
 #: src/modules/navigation-menu-item/edit/side-panel/components/SidePanelNewSidebarItemViewSystemSubView.tsx
 msgid "No system objects with views found"
 msgstr "Nenhum objeto do sistema com visualizações encontrado"
+
+#. js-lingui-id: JD9x0S
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixCard.tsx
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixGtdFilter.tsx
+msgid "No tags"
+msgstr ""
 
 #. js-lingui-id: L4Miic
 #: src/modules/side-panel/pages/page-layout/components/dropdown-content/ChartGroupByFieldSelectionMorphRelationFieldView.tsx
@@ -14494,6 +14635,11 @@ msgstr "Um ou mais filtros fazem referência a campos desativados ou excluídos 
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
 msgid "One subscription provides one enterprise key that powers one production instance and one potential staging or test instance. To run a staging or test environment, install Twenty on a second server, activate it with this same enterprise key, then register that server as a development instance. Development instances unlock enterprise features without extra billing and do not count toward your production seats."
 msgstr "Uma assinatura fornece uma chave enterprise que alimenta uma instância de produção e uma possível instância de homologação ou teste. Para executar um ambiente de homologação ou teste, instale o Twenty em um segundo servidor, ative-o com essa mesma chave enterprise e registre esse servidor como uma instância de desenvolvimento. Instâncias de desenvolvimento desbloqueiam recursos enterprise sem cobrança extra e não contam para seus assentos de produção."
+
+#. js-lingui-id: /OwtoT
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixProjectSidebar.tsx
+msgid "Only"
+msgstr ""
 
 #. js-lingui-id: oFTo3P
 #: src/modules/settings/event-logs/components/SettingsLogs.tsx
@@ -15620,6 +15766,16 @@ msgstr "Perfil - Configurações"
 msgid "Profile Picture"
 msgstr "Foto do perfil"
 
+#. js-lingui-id: DuTuWm
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixProjectSidebar.tsx
+msgid "Project filters"
+msgstr ""
+
+#. js-lingui-id: +0B+ue
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixProjectSidebar.tsx
+msgid "Projects"
+msgstr ""
+
 #. js-lingui-id: W9uQXX
 #: src/modules/workflow/workflow-steps/workflow-actions/ai-agent-action/components/WorkflowEditActionAiAgent.tsx
 msgid "Prompt"
@@ -15758,6 +15914,11 @@ msgstr "Fila: {queueName}"
 #: src/modules/settings/mcp-and-apis/utils/buildMcpSetupCategories.tsx
 msgid "Quick install"
 msgstr "Instalação rápida"
+
+#. js-lingui-id: SBgZCP
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixAxes.tsx
+msgid "Quick wins"
+msgstr ""
 
 #. js-lingui-id: 4JbV5W
 #: src/modules/ai/utils/tool-display/build-generic-tool-status-message.util.ts
@@ -15957,6 +16118,11 @@ msgstr "Reconexão necessária"
 #: src/modules/activities/calendar/components/CalendarEventComposerFields.tsx
 msgid "Reconnect this account to grant permission to create calendar events."
 msgstr "Reconecte esta conta para conceder permissão para criar eventos de calendário."
+
+#. js-lingui-id: wC1MUR
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixAxes.tsx
+msgid "Reconsider"
+msgstr ""
 
 #. js-lingui-id: hVS0gK
 #: src/modules/activities/timeline-activities/rows/generic/components/EventRowGenericLinked.tsx
@@ -16649,6 +16815,11 @@ msgstr "Valor de Retorno"
 msgid "reverse alphabetical"
 msgstr "alfabética inversa"
 
+#. js-lingui-id: 6NlMv9
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrix.tsx
+msgid "Review unscored tasks"
+msgstr ""
+
 #. js-lingui-id: GXsAby
 #: src/modules/settings/admin-panel/components/SettingsAdminWorkspaceCreditGrantRowDropdownMenu.tsx
 #: src/modules/settings/admin-panel/components/SettingsAdminWorkspaceCreditGrantsTable.tsx
@@ -16982,6 +17153,11 @@ msgstr "Escopos"
 msgid "Score"
 msgstr "Pontuação"
 
+#. js-lingui-id: oXzBSn
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrix.tsx
+msgid "scored tasks"
+msgstr ""
+
 #. js-lingui-id: oOi11l
 #: src/modules/ai/components/AiChatScrollToBottomButton.tsx
 msgid "Scroll to bottom"
@@ -17084,6 +17260,11 @@ msgstr "Pesquisar em campos indexados..."
 #: src/modules/settings/roles/role-assignment/components/SettingsRoleAssignmentEntityPickerDropdown.tsx
 msgid "Search agents"
 msgstr "Pesquisar agentes"
+
+#. js-lingui-id: b+5McE
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixGtdFilter.tsx
+msgid "Search all GTD tags"
+msgstr ""
 
 #. js-lingui-id: fGTI3o
 #: src/pages/settings/applications/components/SettingsApplicationsTable.tsx
@@ -17213,6 +17394,11 @@ msgstr "Pesquisar um usuário..."
 msgid "Search for an object..."
 msgstr "Pesquisar um objeto..."
 
+#. js-lingui-id: NhiBg/
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixGtdFilter.tsx
+msgid "Search GTD tags"
+msgstr ""
+
 #. js-lingui-id: lnwW17
 #: src/modules/ui/input/components/IconPicker.tsx
 msgid "Search icon"
@@ -17234,6 +17420,11 @@ msgstr "Pesquisar operações"
 msgid "Search options"
 msgstr "Pesquisar opções"
 
+#. js-lingui-id: blFttG
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixProjectSidebar.tsx
+msgid "Search projects"
+msgstr ""
+
 #. js-lingui-id: rRklUH
 #: src/modules/navigation-menu-item/edit/side-panel/components/SidePanelNewSidebarItemRecordSubPage.tsx
 msgid "Search records..."
@@ -17248,6 +17439,12 @@ msgstr "Pesquisar registros..."
 #: src/modules/workflow/workflow-variables/components/WorkflowVariablesDropdownSteps.tsx
 msgid "Search steps and fields"
 msgstr "Pesquisar etapas e campos"
+
+#. js-lingui-id: bM6bNI
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrix.tsx
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrix.tsx
+msgid "Search tasks"
+msgstr ""
 
 #. js-lingui-id: YIix5Y
 #: src/modules/settings/developers/components/WebhookEntitySelect.tsx
@@ -17562,6 +17759,12 @@ msgstr "Selecionar Ação"
 #: src/modules/side-panel/pages/workflow/hooks/useSidePanelWorkflowNavigation.ts
 msgid "Select Action"
 msgstr "Selecionar Ação"
+
+#. js-lingui-id: wgNoIs
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixGtdFilter.tsx
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixProjectSidebar.tsx
+msgid "Select all"
+msgstr ""
 
 #. js-lingui-id: /fhMKz
 #: src/modules/object-record/record-table/record-table-header/components/RecordTableHeaderCheckboxColumn.tsx
@@ -18034,6 +18237,7 @@ msgid "show all"
 msgstr "mostrar tudo"
 
 #. js-lingui-id: lZw9AX
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrix.tsx
 #: src/pages/settings/applications/components/SettingsApplicationRegistrationInstalledWorkspaces.tsx
 msgid "Show all"
 msgstr "Mostrar tudo"
@@ -18254,6 +18458,11 @@ msgstr "Ignorado"
 #: src/modules/settings/data-model/fields/forms/select/components/SettingsDataModelFieldSelectFormOptionRow.tsx
 msgid "Sky"
 msgstr "Céu"
+
+#. js-lingui-id: 0ZjYYK
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixAxes.tsx
+msgid "Small improvements"
+msgstr ""
 
 #. js-lingui-id: Ik7fz5
 #: src/modules/advanced-text-editor/extensions/slash-command/DefaultSlashCommands.ts
@@ -18504,6 +18713,11 @@ msgstr "Fases"
 #: src/pages/settings/ai/components/SettingsAgentToolsTab.tsx
 msgid "Standard"
 msgstr "Padrão"
+
+#. js-lingui-id: hJnK1z
+#: src/modules/object-record/record-index/components/RecordIndexContainer.tsx
+msgid "Standard view"
+msgstr ""
 
 #. js-lingui-id: 9oJdah
 #: src/modules/side-panel/pages/page-layout/components/SidePanelPageLayoutDashboardWidgetTypeSelect.tsx
@@ -19107,6 +19321,11 @@ msgstr "Relação de destino no objeto de junção"
 msgid "Target workspace subdomain"
 msgstr "Subdomínio de destino do espaço de trabalho"
 
+#. js-lingui-id: 2k/mRY
+#: src/modules/object-record/record-index/components/RecordIndexContainer.tsx
+msgid "Task layout"
+msgstr ""
+
 #. js-lingui-id: R+s8S+
 #: src/modules/activities/tasks/components/TaskRow.tsx
 msgid "Task title"
@@ -19116,6 +19335,11 @@ msgstr "Título da tarefa"
 #: src/modules/activities/notes/components/NoteTile.tsx
 msgid "Task Title"
 msgstr "Título da tarefa"
+
+#. js-lingui-id: GtycJ/
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixModal.tsx
+msgid "Tasks"
+msgstr ""
 
 #. js-lingui-id: KM6m8p
 #: src/pages/settings/members/SettingsWorkspaceMembers.tsx
@@ -19348,6 +19572,11 @@ msgstr "O contrato completo com campos preenchidos para sua implantação."
 msgid "The icon your workflow trigger will display in the command menu"
 msgstr "O ícone que o seu acionador de fluxo de trabalho irá exibir no menu de comando"
 
+#. js-lingui-id: endrS5
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixContainer.tsx
+msgid "The matrix requires readable Effort and Impact fields on tasks. Ask your administrator to check the task fields and your access."
+msgstr ""
+
 #. js-lingui-id: HiI1Lo
 #: src/pages/settings/admin-panel/SettingsAdminNewAiModel.tsx
 msgid "The model identifier used by the provider API"
@@ -19510,6 +19739,16 @@ msgstr "Não há atividade associada a este registro."
 #: src/pages/auth/PasswordReset.tsx
 msgid "There was an error while updating password."
 msgstr "Ocorreu um erro ao atualizar a senha."
+
+#. js-lingui-id: oklchw
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrix.tsx
+msgid "These tasks need scores"
+msgstr ""
+
+#. js-lingui-id: 4qjvXe
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrix.tsx
+msgid "They are waiting in the Unscored tray below."
+msgstr ""
 
 #. js-lingui-id: 5Ml5Nr
 #: src/modules/advanced-text-editor/constants/AdvancedTextEditorBlockCatalog.ts
@@ -20009,6 +20248,7 @@ msgstr "Para"
 #: src/modules/localization/utils/formatDateISOStringToRelativeDate.ts
 #: src/modules/object-record/record-calendar/components/RecordCalendarTopBar.tsx
 #: src/modules/settings/admin-panel/health-status/constants/WorkerQueueMetricsSelectOptions.ts
+#: src/modules/ui/input/components/internal/date/components/DatePicker.tsx
 #: src/utils/date-utils.ts
 msgid "Today"
 msgstr "Hoje"
@@ -20061,6 +20301,7 @@ msgstr "Tomate"
 
 #. js-lingui-id: BRMXj0
 #: src/modules/localization/utils/formatDateISOStringToRelativeDate.ts
+#: src/modules/ui/input/components/internal/date/components/DatePicker.tsx
 msgid "Tomorrow"
 msgstr "Amanhã"
 
@@ -20324,6 +20565,7 @@ msgid "True"
 msgstr "Verdadeiro"
 
 #. js-lingui-id: KDw4GX
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixContainer.tsx
 #: src/modules/onboarding/components/upgrade-free-trial/ChooseYourPlanErrorState.tsx
 #: src/modules/settings/billing/components/SettingsBillingPlansErrorState.tsx
 msgid "Try again"
@@ -20501,6 +20743,11 @@ msgstr ""
 #: src/pages/settings/members/SettingsWorkspaceMember.tsx
 msgid "Unable to delete member right now"
 msgstr "Não foi possível excluir o membro agora"
+
+#. js-lingui-id: Ze9BD+
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixContainer.tsx
+msgid "Unable to load all tasks. Try again to show the complete matrix."
+msgstr ""
 
 #. js-lingui-id: HSLWzn
 #: src/pages/auth/Authorize.tsx
@@ -20746,6 +20993,11 @@ msgstr "Em aberto"
 msgid "Unpin tab"
 msgstr "Desafixar aba"
 
+#. js-lingui-id: 9GcF/u
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrix.tsx
+msgid "Unscored"
+msgstr ""
+
 #. js-lingui-id: SMaFdc
 #: src/modules/settings/unsubscribers/components/SettingsUnsubscribePreview.tsx
 #: src/pages/settings/communications/SettingsWorkspaceCommunications.tsx
@@ -20846,6 +21098,11 @@ msgstr "Lista sem título"
 #: src/modules/settings/roles/role/components/SettingsRoleCreateEffect.tsx
 msgid "Untitled role"
 msgstr "Papel sem título"
+
+#. js-lingui-id: CowgFX
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixCard.tsx
+msgid "Untitled task"
+msgstr ""
 
 #. js-lingui-id: jxRjAG
 #: src/modules/activities/emails/components/CampaignDetailsFields.tsx
@@ -21565,6 +21822,11 @@ msgstr "Ver agente"
 #: src/modules/settings/usage/components/SettingsUsageAnalyticsSection.tsx
 msgid "View AI usage breakdown"
 msgstr "Ver detalhamento do uso de IA"
+
+#. js-lingui-id: N6Pxr9
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrix.tsx
+msgid "View all"
+msgstr ""
 
 #. js-lingui-id: lFgRxz
 #: src/modules/settings/admin-panel/ai/components/SettingsAdminAI.tsx
