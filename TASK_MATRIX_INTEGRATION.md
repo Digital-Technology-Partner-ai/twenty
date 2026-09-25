@@ -4,11 +4,23 @@
 
 The native matrix is running in a separate test CRM on Hudson's Mac mini:
 
-http://127.0.0.1:3030/objects/tasks?taskLayout=matrix
+https://hudsons-mac-mini.taild3bcf1.ts.net:8443/objects/tasks?taskLayout=matrix
 
 Sign in with the usual CRM credentials. This is a restored copy. Production
 still runs its original image and database on Omar. Deployment waits for
 Hudson's review of staging.
+
+The reviewing device must be connected to Tailscale. The original loopback
+address works only on the Mac mini. Tailscale Serve now provides private HTTPS
+on port 8443 and forwards to the local gateway. Existing Tailscale routing on
+port 443 is preserved; public Funnel access is not enabled.
+
+The HTTPS sign-in page was verified in fresh Chromium and WebKit sessions with
+no failed responses or JavaScript errors. Health and frontend asset requests
+also succeeded from Omar over Tailscale. The gateway uses multiple workers
+and 2,048 connections per worker to accommodate the parallel asset requests
+from the HTTPS proxy. Authenticated matrix acceptance checks below were
+completed before changing the staging origin.
 
 The original checkout and prototype remain unchanged. Work is saved in
 `/Users/hudsonrebel/twenty-matrix-v2395`, branch `codex/task-matrix-v2395`.

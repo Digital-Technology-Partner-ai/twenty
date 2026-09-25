@@ -1,7 +1,9 @@
 # DTP matrix staging
 
-The restored test CRM runs on Hudson's Mac mini at
-http://127.0.0.1:3030/objects/tasks?taskLayout=matrix.
+The restored test CRM runs on Hudson's Mac mini and is available privately at
+https://hudsons-mac-mini.taild3bcf1.ts.net:8443/objects/tasks?taskLayout=matrix.
+The reviewing device must be connected to Tailscale. `127.0.0.1:3030` is the
+Mac mini's local gateway address; it cannot be used from another device.
 Use the usual CRM credentials. Production has not been deployed or migrated.
 The implementation and validation record is in `TASK_MATRIX_INTEGRATION.md`.
 
@@ -18,6 +20,21 @@ docker --context desktop-linux compose \
 Use the same command prefix with `up -d --wait` to start staging or `stop` to
 stop it. Do not use `down --volumes` while the restored data is needed. The env
 file contains secrets; do not print it or commit it.
+
+Private HTTPS is provided by a separate Tailscale Serve listener:
+
+```sh
+/Applications/Tailscale.app/Contents/MacOS/Tailscale serve --bg --https=8443 http://127.0.0.1:3030
+```
+
+This uses tailnet access, not public Funnel access. The previous port-443
+configuration is preserved. `DTP_MATRIX_SERVER_URL` uses the HTTPS origin above,
+and nginx preserves its forwarded HTTPS scheme. Multiple nginx workers and
+2,048 connections per worker accommodate the parallel asset requests from
+HTTPS clients. Fresh Chromium and WebKit sign-in page checks passed.
+To remove only the staging
+listener, use `tailscale serve --https=8443 off` with the same executable;
+do not use `serve reset`, which would remove unrelated routing.
 
 The application and database use the imported Linux/AMD64 images. Redis 7.4.9
 uses ARM64 because its AMD64 binaries crash under local QEMU. The application,
