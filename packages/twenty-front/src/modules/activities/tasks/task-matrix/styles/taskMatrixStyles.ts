@@ -229,6 +229,7 @@ export const StyledTaskCard = styled.button`
   background: ${themeCssVariables.background.primary};
   border: 1px solid ${themeCssVariables.border.color.light};
   border-radius: ${themeCssVariables.border.radius.sm};
+  color: ${themeCssVariables.font.color.primary};
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -401,6 +402,7 @@ export const StyledFilterButton = styled.button`
   background: transparent;
   border: 1px solid ${themeCssVariables.border.color.medium};
   border-radius: ${themeCssVariables.border.radius.sm};
+  color: ${themeCssVariables.font.color.primary};
   cursor: pointer;
   padding: ${themeCssVariables.spacing[2]} ${themeCssVariables.spacing[3]};
 `;
@@ -508,6 +510,7 @@ export const StyledUnscoredTray = styled.button`
   background: ${themeCssVariables.background.tertiary};
   border: 1px solid ${themeCssVariables.border.color.light};
   border-radius: ${themeCssVariables.border.radius.sm};
+  color: ${themeCssVariables.font.color.primary};
   cursor: pointer;
   display: flex;
   gap: ${themeCssVariables.spacing[2]};
