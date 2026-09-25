@@ -7,8 +7,9 @@ The native matrix is running in a separate test CRM on Hudson's Mac mini:
 https://hudsons-mac-mini.taild3bcf1.ts.net:8443/objects/tasks?taskLayout=matrix
 
 Sign in with the usual CRM credentials. This is a restored copy. Production
-still runs its original image and database on Omar. Deployment waits for
-Hudson's review of staging.
+still runs its original image and database on Omar. Hudson approved the design
+and authorized a fresh backup and live deployment on 26 September. Deployment
+is pending the restricted-role check and access to the locked credential vault.
 
 The reviewing device must be connected to Tailscale. The original loopback
 address works only on the Mac mini. Tailscale Serve now provides private HTTPS
@@ -112,10 +113,10 @@ locales fall back to English. Narrow cards keep score pills on one line.
 - The original staging account password hash was restored after a temporary
   staging-only test login. The temporary credential file was removed.
 
-User review, testing with a restricted-permission account and final deployment
-checks remain before production rollout. Background integrations are
-intentionally not exercised in staging. Attachment contents were verified by
-hash; a browser upload/download check remains part of final acceptance.
+Hudson completed design review and verified attachment upload/download by
+creating a test task and attaching a test file. Restricted-role and final
+deployment checks remain before production rollout. Background integrations
+are intentionally not exercised in staging.
 
 ## After review
 
@@ -129,3 +130,24 @@ hash; a browser upload/download check remains part of final acceptance.
 See `packages/twenty-docker/dtp-matrix-staging/README.md` for staging commands,
 image identities and recovery details. Private runtime inputs and logs are in
 `/Users/hudsonrebel/.local/share/dtp-matrix-staging`.
+
+## Production deployment preparation, 26 September
+
+The exact tested image was exported and copied to Omar at
+`/home/omar/.local/share/dtp-matrix-release/matrix-release-20260925.tar.gz`.
+Local and remote SHA-256 values match:
+`83557aa9a0b973f29eb63378ceebf398e70ca604e67c63468af6d0e274e74e40`.
+Inspection of the final image layer confirmed that all 1,445 changed files
+are under `/app/packages/twenty-server/dist/front/`. All preceding layers
+match the current live image. No backend or migration files change.
+
+`deploy-live.py` requires the fresh backup directory and checks its manifest,
+checksums and age (under one hour). The import step must tag the tested image
+as `dtp-twenty-matrix:20260926`; the script checks that tag's exact image ID.
+It compares rendered Compose configurations and allows only `server.image`
+to change. It recreates only `server`, waits for health, and checks that live
+environment, mounts, ports and the other four service identities are unchanged.
+On verification failure it restores the original Compose and server image.
+
+These files are preparation, not evidence of a completed production rollout.
+The fresh backup and deployment receipt will be recorded after execution.

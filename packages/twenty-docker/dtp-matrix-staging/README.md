@@ -141,3 +141,21 @@ the existing live database and attachment volume. A code-only rollback selects
 the original verified image while retaining current live data. Never restore
 staging data into production. Production Compose/worker configuration needs its
 own final review; this file contains only the local staging definition.
+
+
+## Guarded live deployment
+
+`deploy-live.py` is intended for root on the verified Omar host only. First
+import the exact tested image and tag it `dtp-twenty-matrix:20260926`. Complete
+restricted-role acceptance, take a fresh backup, copy and verify its archive
+locally, then run the script with the unpacked server backup directory:
+
+```sh
+python3 deploy-live.py --backup /var/backups/dtp-twenty/matrix-TIMESTAMP
+python3 deploy-live.py --backup /var/backups/dtp-twenty/matrix-TIMESTAMP --apply
+```
+
+The first invocation checks preconditions without changing the running CRM.
+The second updates only the server image and retains current live data. It
+records a rollback Compose path and a deployment receipt in the backup folder.
+Credential retrieval and secret runtime inputs remain outside the repository.
