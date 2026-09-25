@@ -4,8 +4,9 @@ This directory defines an isolated, local-only staging harness for the exact
 v2.39.5 matrix worktree. It is intentionally separate from the production
 compose project and publishes only `127.0.0.1:3030`.
 
-Status: pending SSH access, verified production inventory, and a verified
-database backup. Do not start this stack until those inputs have been checked.
+Status: SSH access works as `omar`; administrator authentication, verified
+production inventory, and a verified database backup are pending. Do not start
+this stack until those inputs have been checked.
 No production host, production volume, or production network is referenced by
 this compose file.
 

@@ -6,9 +6,23 @@ The native frontend implementation and isolated staging configuration are
 prepared locally. Production has not been changed. No new production backup
 has been taken, and no production database has been restored into staging.
 
-SSH to the documented Omar address, `100.126.181.121`, is reachable but rejected
-the available credentials. The remaining server work requires the correct SSH
-username and an existing key-file path or configured host alias.
+SSH to `omar@100.126.181.121` now works from Hudson's Mac mini using the existing
+`~/.ssh/id_ed25519_hudson_to_steves_mbp` key. The host identifies itself as
+`omar-macbook-pro`, running Linux. The account has sudo rights, but Docker and
+`/opt/dtp/twenty-crm` require administrator privileges and noninteractive sudo
+requires a password. Direct root SSH with this key is not permitted.
+
+The remaining blocker is administrator authentication for inventory and backup,
+not SSH connectivity. `inspect-live.sh` in the staging directory provides a
+read-only inventory for an operator to run with sudo. It prints selected image,
+mount and version metadata, never environment values or configuration contents.
+
+Hudson identified the saved Omar credential in KeePassXC on the Mac mini.
+KeePassXC is open, but its `DTP-Hudson` database is locked; the user has been
+asked to unlock it locally. No password has been copied or recorded. The
+inventory script is available on Omar at
+`/home/omar/.local/share/dtp-matrix/inspect-live.sh`; its SHA-256 matches the
+local copy, and it has not been run with administrator privileges.
 
 ## Baseline and scope
 
