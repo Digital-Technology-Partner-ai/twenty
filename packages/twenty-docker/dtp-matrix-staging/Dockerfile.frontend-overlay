@@ -1,0 +1,8 @@
+# Build with the repository root as context. BASE_IMAGE must be an immutable,
+# inventory-verified image containing the server and its planned-day/tooltips.
+ARG BASE_IMAGE
+FROM ${BASE_IMAGE}
+
+# The canonical Twenty image copies this exact frontend artifact path into the
+# server image; see packages/twenty-docker/twenty/Dockerfile (target `twenty`).
+COPY --chown=1000:1000 packages/twenty-front/build/ /app/packages/twenty-server/dist/front/

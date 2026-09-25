@@ -95,7 +95,6 @@ export const OverflowingTextWithTooltip = ({
         </Text>
       ) : (
         <Text
-          truncate
           data-testid="tooltip"
           data-content-overflowing={isTitleOverflowing ? '' : undefined}
           className={clsx(
@@ -104,6 +103,16 @@ export const OverflowingTextWithTooltip = ({
           )}
           ref={textRef}
           id={textElementId}
+          style={{
+            // Clip avoids Safari's native tooltip while preserving app tooltip behavior.
+            display: '-webkit-box',
+            overflow: 'hidden',
+            overflowWrap: 'anywhere',
+            textOverflow: 'clip',
+            WebkitBoxOrient: 'vertical',
+            WebkitLineClamp: 1,
+            whiteSpace: 'normal',
+          }}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >

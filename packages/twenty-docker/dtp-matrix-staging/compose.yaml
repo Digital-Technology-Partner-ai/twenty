@@ -1,0 +1,83 @@
+name: dtp-matrix-staging
+
+services:
+  server:
+    image: ${DTP_MATRIX_IMAGE:?Set DTP_MATRIX_IMAGE to the verified staging image}
+    restart: "no"
+    ports:
+      - "127.0.0.1:3030:3000"
+    volumes:
+      - dtp-matrix-staging-files:/app/packages/twenty-server/.local-storage
+    environment:
+      NODE_PORT: "3000"
+      SERVER_URL: ${DTP_MATRIX_SERVER_URL:?Set DTP_MATRIX_SERVER_URL to the local staging URL}
+      PG_DATABASE_URL: postgres://${DTP_MATRIX_DB_USER:?Set DTP_MATRIX_DB_USER}:${DTP_MATRIX_DB_PASSWORD:?Set DTP_MATRIX_DB_PASSWORD}@db:5432/${DTP_MATRIX_DB_NAME:?Set DTP_MATRIX_DB_NAME}
+      REDIS_URL: redis://redis:6379
+      DISABLE_DB_MIGRATIONS: "true"
+      DISABLE_CRON_JOBS_REGISTRATION: "true"
+      EMAIL_DRIVER: logger
+      AUTH_GOOGLE_ENABLED: "false"
+      MESSAGING_PROVIDER_GMAIL_ENABLED: "false"
+      CALENDAR_PROVIDER_GOOGLE_ENABLED: "false"
+      AUTH_MICROSOFT_ENABLED: "false"
+      MESSAGING_PROVIDER_MICROSOFT_ENABLED: "false"
+      CALENDAR_PROVIDER_MICROSOFT_ENABLED: "false"
+      IS_IMAP_SMTP_CALDAV_ENABLED: "false"
+      IS_IMAP_SMTP_CALDAV_CONNECTION_TEST_ENABLED: "false"
+      STORAGE_TYPE: local
+      ENCRYPTION_KEY: ${DTP_MATRIX_ENCRYPTION_KEY:?Set DTP_MATRIX_ENCRYPTION_KEY}
+      FALLBACK_ENCRYPTION_KEY: ${DTP_MATRIX_FALLBACK_ENCRYPTION_KEY:-}
+      APP_SECRET: ${DTP_MATRIX_APP_SECRET:?Set DTP_MATRIX_APP_SECRET to a fresh staging secret}
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "curl --fail http://localhost:3000/healthz"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    networks:
+      - staging-internal
+
+  db:
+    image: ${DTP_MATRIX_DB_IMAGE:?Set DTP_MATRIX_DB_IMAGE to the confirmed production-compatible Postgres 16 image}
+    restart: "no"
+    environment:
+      POSTGRES_DB: ${DTP_MATRIX_DB_NAME:?Set DTP_MATRIX_DB_NAME}
+      POSTGRES_USER: ${DTP_MATRIX_DB_USER:?Set DTP_MATRIX_DB_USER}
+      POSTGRES_PASSWORD: ${DTP_MATRIX_DB_PASSWORD:?Set DTP_MATRIX_DB_PASSWORD}
+    volumes:
+      - dtp-matrix-staging-db:/var/lib/postgresql/data
+      - ${DTP_MATRIX_BACKUP_DIR:?Set DTP_MATRIX_BACKUP_DIR to a verified backup directory}:/backup:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    networks:
+      - staging-internal
+
+  redis:
+    image: ${DTP_MATRIX_REDIS_IMAGE:?Set DTP_MATRIX_REDIS_IMAGE to the verified compatible Redis image}
+    restart: "no"
+    command: ["redis-server", "--maxmemory-policy", "noeviction"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    networks:
+      - staging-internal
+
+volumes:
+  dtp-matrix-staging-db:
+    name: dtp-matrix-staging-db
+  dtp-matrix-staging-files:
+    name: dtp-matrix-staging-files
+
+networks:
+  staging-internal:
+    name: dtp-matrix-staging-internal
+    internal: true
