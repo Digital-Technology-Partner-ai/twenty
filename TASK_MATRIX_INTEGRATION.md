@@ -142,7 +142,9 @@ The exact tested image was exported and copied to Omar at
 `/home/omar/.local/share/dtp-matrix-release/matrix-release-selected-a-20260926.tar.gz`.
 Local and remote SHA-256 values match:
 `8d9e080ee800e4e01964fc4b09e9b0291a4ee0379a8e2a26868222254e28ee1c`.
-The release image ID is
+The release image ID reported by Docker is
+`sha256:df8dace41f07749dce39a0ad2eadf91c6b3d445a9b64d884a1afd17b4632289a`;
+its OCI config digest is
 `sha256:8e5721f51236447bfbf26363836911a9961486260b5028b09dfffd3e8a426ac2`.
 Inspection of the final image layer confirmed that all 1,445 changed files
 are under `/app/packages/twenty-server/dist/front/`. All preceding layers
