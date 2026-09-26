@@ -135,7 +135,7 @@ export const StyledMatrix = styled.div`
   flex: 1;
   gap: ${themeCssVariables.spacing[3]};
   grid-template-columns: repeat(3, minmax(220px, 1fr));
-  grid-template-rows: repeat(3, minmax(190px, 1fr));
+  grid-template-rows: repeat(3, 190px);
   margin: 0 0 30px 64px;
   min-height: 690px;
   min-width: 760px;
@@ -195,10 +195,10 @@ export const StyledQuadrant = styled.div<{
 }>`
   background: ${({ quadrant }) =>
     ({
-      quick: themeCssVariables.color.green2,
-      major: themeCssVariables.color.blue2,
-      small: themeCssVariables.color.yellow2,
-      reconsider: themeCssVariables.color.red2,
+      quick: `color-mix(in srgb, ${themeCssVariables.color.green3} 10%, ${themeCssVariables.color.green2})`,
+      major: `color-mix(in srgb, ${themeCssVariables.color.blue3} 10%, ${themeCssVariables.color.blue2})`,
+      small: `color-mix(in srgb, ${themeCssVariables.color.yellow3} 10%, ${themeCssVariables.color.yellow2})`,
+      reconsider: `color-mix(in srgb, ${themeCssVariables.color.red3} 10%, ${themeCssVariables.color.red2})`,
     })[quadrant]};
   inset: ${({ quadrant }) =>
     quadrant === 'quick'
@@ -214,15 +214,57 @@ export const StyledQuadrant = styled.div<{
 `;
 
 export const StyledGroupCell = styled.section`
-  align-items: center;
   display: flex;
   flex-direction: column;
-  gap: ${themeCssVariables.spacing[2]};
-  justify-content: center;
+  gap: ${themeCssVariables.spacing[1]};
+  height: 100%;
   min-width: 0;
-  padding: ${themeCssVariables.spacing[2]};
+  overflow: hidden;
+  padding: ${themeCssVariables.spacing[1]} ${themeCssVariables.spacing[2]};
   position: relative;
   z-index: 1;
+`;
+
+export const StyledGroupCount = styled.span`
+  align-self: flex-end;
+  color: ${themeCssVariables.font.color.tertiary};
+  font-size: 10px;
+  line-height: 14px;
+  padding-right: ${themeCssVariables.spacing[1]};
+`;
+
+export const StyledGroupScroller = styled.div`
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 6px;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 1px ${themeCssVariables.spacing[1]} 26px;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+`;
+
+export const StyledGroupOverflowButton = styled.button`
+  align-self: center;
+  backdrop-filter: blur(4px);
+  background: color-mix(
+    in srgb,
+    ${themeCssVariables.background.primary} 88%,
+    transparent
+  );
+  border: 1px solid ${themeCssVariables.border.color.medium};
+  border-radius: 999px;
+  bottom: ${themeCssVariables.spacing[1]};
+  box-shadow: 0 2px 5px ${themeCssVariables.boxShadow.light};
+  color: ${themeCssVariables.font.color.secondary};
+  cursor: pointer;
+  font-size: 10px;
+  line-height: 20px;
+  padding: 0 ${themeCssVariables.spacing[3]};
+  position: absolute;
+  z-index: 2;
 `;
 
 export const StyledTaskCard = styled.button`
@@ -336,6 +378,15 @@ export const StyledCardBottom = styled.span`
   margin-top: auto;
 `;
 
+export const StyledDueDate = styled.span`
+  color: ${themeCssVariables.font.color.tertiary};
+  font-size: 10px;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+`;
+
 export const StyledScorePill = styled.span<{
   tone: 'good' | 'warn' | 'bad' | 'neutral';
 }>`
@@ -359,48 +410,99 @@ export const StyledScorePill = styled.span<{
   white-space: nowrap;
 `;
 
-export const StyledCompactRow = styled.button`
+export const StyledExpandableCard = styled.button`
   align-items: center;
-  background: transparent;
-  border: 0;
-  border-top: 1px solid ${themeCssVariables.border.color.light};
-  color: ${themeCssVariables.font.color.secondary};
+  background: ${themeCssVariables.background.primary};
+  border: 1px solid ${themeCssVariables.border.color.light};
+  border-radius: ${themeCssVariables.border.radius.sm};
+  box-shadow: 0 1px 2px ${themeCssVariables.boxShadow.light};
+  color: ${themeCssVariables.font.color.primary};
   cursor: pointer;
   display: flex;
-  font-size: 11px;
-  gap: ${themeCssVariables.spacing[1]};
-  max-width: 290px;
+  flex-direction: column;
+  flex-shrink: 0;
+  height: 38px;
+  max-width: 100%;
   overflow: hidden;
-  padding: ${themeCssVariables.spacing[2]} ${themeCssVariables.spacing[1]};
+  padding: 0 ${themeCssVariables.spacing[2]};
   text-align: left;
-  text-overflow: ellipsis;
+  transition:
+    border-color 140ms ease,
+    box-shadow 140ms ease,
+    height 160ms ease;
   width: 100%;
+
+  &:hover,
+  &:focus-visible {
+    border-color: ${themeCssVariables.color.blue};
+    box-shadow: 0 3px 9px ${themeCssVariables.boxShadow.light};
+    height: 132px;
+    outline: none;
+  }
 `;
 
-export const StyledMoreButton = styled.button`
-  background: transparent;
-  border: 0;
-  border-radius: ${themeCssVariables.border.radius.xs};
-  color: ${themeCssVariables.font.color.secondary};
-  cursor: pointer;
+export const StyledExpandableCardSummary = styled.span`
+  align-items: center;
+  display: flex;
+  flex-shrink: 0;
+  gap: ${themeCssVariables.spacing[2]};
+  height: 36px;
+  min-width: 0;
+  width: 100%;
+
+  ${StyledProjectChip} {
+    margin-left: auto;
+    max-width: 42%;
+  }
+`;
+
+export const StyledExpandableCardTitle = styled.span`
   font-size: 11px;
-  padding: ${themeCssVariables.spacing[2]};
-  width: min(100%, 290px);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+`;
+
+export const StyledExpandableCardDetails = styled.span`
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto 1fr;
+  min-height: 0;
+  opacity: 0;
+  padding: 4px 0 ${themeCssVariables.spacing[2]};
+  transition: opacity 90ms ease;
+  width: 100%;
+
+  ${StyledOwner} {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+  }
+
+  ${StyledTags} {
+    align-self: start;
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  ${StyledDueDate} {
+    align-self: end;
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+
+  ${StyledExpandableCard}:hover &,
+  ${StyledExpandableCard}:focus-visible & {
+    opacity: 1;
+    transition-delay: 70ms;
+  }
 `;
 
 export const StyledScorePills = styled.span`
   display: inline-flex;
   flex-shrink: 0;
   gap: 3px;
-`;
-
-export const StyledDueDate = styled.span`
-  color: ${themeCssVariables.font.color.tertiary};
-  font-size: 10px;
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 `;
 
 export const StyledFilterButton = styled.button`

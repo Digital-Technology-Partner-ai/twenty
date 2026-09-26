@@ -1,11 +1,9 @@
 import { useMemo, useRef, useState } from 'react';
 import { t } from '@lingui/core/macro';
-import { isDefined } from 'twenty-shared/utils';
 
 import {
   StyledChartScroll,
   StyledEmptyState,
-  StyledGroupCell,
   StyledMatrix,
   StyledMatrixBody,
   StyledMatrixContent,
@@ -13,14 +11,13 @@ import {
   StyledMatrixMeta,
   StyledMatrixPage,
   StyledMatrixToolbar,
-  StyledMoreButton,
   StyledSearchInput,
   StyledToolbarActions,
   StyledToolbarTitle,
   StyledUnscoredTray,
 } from '../styles/taskMatrixStyles';
-import { TaskMatrixCard, TaskMatrixCompactTask } from './TaskMatrixCard';
 import { TaskMatrixGtdFilter, NO_TAGS_ID } from './TaskMatrixGtdFilter';
+import { TaskMatrixGroup } from './TaskMatrixGroup';
 import { TaskMatrixModal } from './TaskMatrixModal';
 import { TaskMatrixAxes } from './TaskMatrixAxes';
 import { TaskMatrixProjectSidebar } from './TaskMatrixProjectSidebar';
@@ -57,9 +54,7 @@ export const TaskMatrix = ({
     null,
   );
   const [taskQuery, setTaskQuery] = useState('');
-  const [modalGroupIndex, setModalGroupIndex] = useState<
-    number | 'unscored' | null
-  >(null);
+  const [isUnscoredModalOpen, setIsUnscoredModalOpen] = useState(false);
   const modalRef = useRef<HTMLDialogElement>(null);
 
   const tagLabels = new Map(tags.map((tag) => [tag.id, tag.label]));
@@ -111,24 +106,15 @@ export const TaskMatrix = ({
   );
   const unscored = visibleTasks.filter((task) => groupIndex(task) === -1);
 
-  const openList = (list: TaskMatrixTask[]) => {
-    setModalGroupIndex(
-      list.every((task) => groupIndex(task) === -1)
-        ? 'unscored'
-        : groupIndex(list[0]),
-    );
+  const openUnscoredList = () => {
+    setIsUnscoredModalOpen(true);
     modalRef.current?.showModal();
   };
   const effectiveProjectIds =
     selectedProjectIds ?? new Set(allProjects.map(({ id }) => id));
   const effectiveTagIds =
     selectedTagIds ?? new Set([...tags.map(({ id }) => id), NO_TAGS_ID]);
-  const modalTasks =
-    modalGroupIndex === null
-      ? []
-      : modalGroupIndex === 'unscored'
-        ? unscored
-        : (groups[modalGroupIndex] ?? []);
+  const modalTasks = isUnscoredModalOpen ? unscored : [];
   const changeProjects = (next: Set<string>) =>
     setSelectedProjectIds(next.size === allProjects.length ? null : next);
   const changeTags = (next: Set<string>) =>
@@ -184,30 +170,13 @@ export const TaskMatrix = ({
             <StyledMatrix>
               <TaskMatrixAxes />
               {groups.map((group, index) => (
-                <StyledGroupCell
-                  aria-label={`${SCORE_ORDER[index % 3]} effort`}
+                <TaskMatrixGroup
+                  ariaLabel={`${SCORE_ORDER[index % 3]} effort`}
                   key={index}
-                >
-                  {isDefined(group[0]) && (
-                    <TaskMatrixCard
-                      onOpenTask={onOpenTask}
-                      tagLabels={tagLabels}
-                      task={group[0]}
-                    />
-                  )}
-                  {group.length === 2 && (
-                    <TaskMatrixCompactTask
-                      onOpenTask={onOpenTask}
-                      tagLabels={tagLabels}
-                      task={group[1]}
-                    />
-                  )}
-                  {group.length > 2 && (
-                    <StyledMoreButton onClick={() => openList(group)}>
-                      {t`View all`} {group.length} →
-                    </StyledMoreButton>
-                  )}
-                </StyledGroupCell>
+                  onOpenTask={onOpenTask}
+                  tagLabels={tagLabels}
+                  tasks={group}
+                />
               ))}
               {visibleTasks.length > 0 &&
                 groups.every((group) => group.length === 0) && (
@@ -238,7 +207,7 @@ export const TaskMatrix = ({
           </StyledChartScroll>
           <StyledUnscoredTray
             aria-label={t`Review unscored tasks`}
-            onClick={() => openList(unscored)}
+            onClick={openUnscoredList}
           >
             <span aria-hidden="true">◇</span>
             <strong>{t`Unscored`}</strong>
@@ -250,7 +219,7 @@ export const TaskMatrix = ({
       <TaskMatrixModal
         modalRef={modalRef}
         onClose={() => {
-          setModalGroupIndex(null);
+          setIsUnscoredModalOpen(false);
           modalRef.current?.close();
         }}
         onOpenTask={(taskId) => {

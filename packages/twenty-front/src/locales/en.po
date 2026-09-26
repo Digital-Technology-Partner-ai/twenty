@@ -204,6 +204,12 @@ msgstr "{0, plural, one {{years} year} other {{years} years}}"
 msgid "{0, plural, one {# Object} other {# Objects}}"
 msgstr "{0, plural, one {# Object} other {# Objects}}"
 
+#. js-lingui-id: huXpvM
+#. placeholder {0}: tasks.length
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixGroup.tsx
+msgid "{0, plural, one {# task} other {# tasks}}"
+msgstr "{0, plural, one {# task} other {# tasks}}"
+
 #. js-lingui-id: 8ob0vY
 #. placeholder {0}: failedCount + behindCount
 #: src/modules/settings/admin-panel/utils/getWorkspacesUpgradeHealthText.ts
@@ -504,6 +510,16 @@ msgstr "{grantedCreditsDisplay} credits"
 #: src/modules/workflow/workflow-steps/workflow-actions/http-request-action/components/HttpRequestExecutionResult.tsx
 msgid "{headersCount} headers received"
 msgstr "{headersCount} headers received"
+
+#. js-lingui-id: 2Nv5P1
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixGroup.tsx
+msgid "{hiddenCount, plural, one {# above} other {# above}}"
+msgstr "{hiddenCount, plural, one {# above} other {# above}}"
+
+#. js-lingui-id: NChWUI
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixGroup.tsx
+msgid "{hiddenCount, plural, one {# more} other {# more}}"
+msgstr "{hiddenCount, plural, one {# more} other {# more}}"
 
 #. js-lingui-id: 4xzh1W
 #: src/modules/object-record/record-list/components/RecordListRow.tsx
@@ -9961,6 +9977,7 @@ msgstr "Grouping {objectLabel}"
 
 #. js-lingui-id: k4TsF1
 #: src/modules/activities/tasks/task-matrix/components/TaskMatrixCard.tsx
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixCard.tsx
 #: src/modules/activities/tasks/task-matrix/components/TaskMatrixGtdFilter.tsx
 msgid "GTD tags"
 msgstr "GTD tags"
@@ -13859,6 +13876,7 @@ msgstr "No permissions have been set for individual objects."
 #. js-lingui-id: /v4YhC
 #: src/modules/activities/tasks/task-matrix/components/TaskMatrix.tsx
 #: src/modules/activities/tasks/task-matrix/components/TaskMatrixCard.tsx
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixCard.tsx
 msgid "No project"
 msgstr "No project"
 
@@ -14006,6 +14024,7 @@ msgid "No system objects with views found"
 msgstr "No system objects with views found"
 
 #. js-lingui-id: JD9x0S
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixCard.tsx
 #: src/modules/activities/tasks/task-matrix/components/TaskMatrixCard.tsx
 #: src/modules/activities/tasks/task-matrix/components/TaskMatrixGtdFilter.tsx
 msgid "No tags"
@@ -21098,6 +21117,7 @@ msgstr "Untitled role"
 
 #. js-lingui-id: CowgFX
 #: src/modules/activities/tasks/task-matrix/components/TaskMatrixCard.tsx
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixCard.tsx
 msgid "Untitled task"
 msgstr "Untitled task"
 
@@ -21819,11 +21839,6 @@ msgstr "View Agent"
 #: src/modules/settings/usage/components/SettingsUsageAnalyticsSection.tsx
 msgid "View AI usage breakdown"
 msgstr "View AI usage breakdown"
-
-#. js-lingui-id: N6Pxr9
-#: src/modules/activities/tasks/task-matrix/components/TaskMatrix.tsx
-msgid "View all"
-msgstr "View all"
 
 #. js-lingui-id: lFgRxz
 #: src/modules/settings/admin-panel/ai/components/SettingsAdminAI.tsx

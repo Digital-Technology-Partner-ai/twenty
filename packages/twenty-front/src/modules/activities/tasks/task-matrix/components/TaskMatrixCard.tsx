@@ -5,9 +5,12 @@ import {
   StyledCardBottom,
   StyledCardTitle,
   StyledCardTop,
-  StyledCompactRow,
   StyledDueDate,
   StyledDot,
+  StyledExpandableCard,
+  StyledExpandableCardDetails,
+  StyledExpandableCardSummary,
+  StyledExpandableCardTitle,
   StyledOwner,
   StyledOwnerName,
   StyledProjectChip,
@@ -95,7 +98,7 @@ export const TaskMatrixCard = ({
   </StyledTaskCard>
 );
 
-export const TaskMatrixCompactTask = ({
+export const TaskMatrixExpandableCard = ({
   onOpenTask,
   task,
   tagLabels,
@@ -104,13 +107,47 @@ export const TaskMatrixCompactTask = ({
   task: TaskMatrixTask;
   tagLabels: Map<string, string>;
 }) => (
-  <StyledCompactRow aria-label={task.title} onClick={() => onOpenTask(task.id)}>
-    <StyledDot color={task.project?.color} />
-    <span>{task.title}</span>
-    {task.gtdTagIds.length > 0 && (
-      <StyledTagPill>
-        {tagLabels.get(task.gtdTagIds[0]) ?? task.gtdTagIds[0]}
-      </StyledTagPill>
-    )}
-  </StyledCompactRow>
+  <StyledExpandableCard
+    aria-label={task.title}
+    data-task-matrix-card
+    onClick={() => onOpenTask(task.id)}
+  >
+    <StyledExpandableCardSummary>
+      <StyledDot color={task.project?.color} />
+      <StyledExpandableCardTitle>
+        {task.title || t`Untitled task`}
+      </StyledExpandableCardTitle>
+      <StyledProjectChip color={task.project?.color}>
+        {task.project?.name ?? t`No project`}
+      </StyledProjectChip>
+    </StyledExpandableCardSummary>
+    <StyledExpandableCardDetails>
+      {task.owner && (
+        <StyledOwner title={task.owner.name}>
+          <StyledOwnerName>{task.owner.name.split(' ')[0]}</StyledOwnerName>
+          <Avatar
+            avatarUrl={task.owner.avatarUrl}
+            placeholder={task.owner.name}
+            size="sm"
+            type="rounded"
+          />
+        </StyledOwner>
+      )}
+      <StyledTags aria-label={t`GTD tags`}>
+        {task.gtdTagIds.length === 0 ? (
+          <StyledTagPill>{t`No tags`}</StyledTagPill>
+        ) : (
+          task.gtdTagIds
+            .slice(0, 2)
+            .map((id) => (
+              <StyledTagPill key={id}>{tagLabels.get(id) ?? id}</StyledTagPill>
+            ))
+        )}
+        {task.gtdTagIds.length > 2 && (
+          <StyledTagPill>+{task.gtdTagIds.length - 2}</StyledTagPill>
+        )}
+      </StyledTags>
+      <StyledDueDate>{formatDue(task.dueAt)}</StyledDueDate>
+    </StyledExpandableCardDetails>
+  </StyledExpandableCard>
 );

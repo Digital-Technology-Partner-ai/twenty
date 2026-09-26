@@ -209,6 +209,12 @@ msgstr "{0, plural, other {{years} 年}}"
 msgid "{0, plural, one {# Object} other {# Objects}}"
 msgstr "{0, plural, other {# 個物件}}"
 
+#. js-lingui-id: huXpvM
+#. placeholder {0}: tasks.length
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixGroup.tsx
+msgid "{0, plural, one {# task} other {# tasks}}"
+msgstr ""
+
 #. js-lingui-id: 8ob0vY
 #. placeholder {0}: failedCount + behindCount
 #: src/modules/settings/admin-panel/utils/getWorkspacesUpgradeHealthText.ts
@@ -509,6 +515,16 @@ msgstr "{grantedCreditsDisplay} 積分"
 #: src/modules/workflow/workflow-steps/workflow-actions/http-request-action/components/HttpRequestExecutionResult.tsx
 msgid "{headersCount} headers received"
 msgstr "已收到 {headersCount} 個標頭"
+
+#. js-lingui-id: 2Nv5P1
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixGroup.tsx
+msgid "{hiddenCount, plural, one {# above} other {# above}}"
+msgstr ""
+
+#. js-lingui-id: NChWUI
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixGroup.tsx
+msgid "{hiddenCount, plural, one {# more} other {# more}}"
+msgstr ""
 
 #. js-lingui-id: 4xzh1W
 #: src/modules/object-record/record-list/components/RecordListRow.tsx
@@ -9966,6 +9982,7 @@ msgstr "正在分組 {objectLabel}"
 
 #. js-lingui-id: k4TsF1
 #: src/modules/activities/tasks/task-matrix/components/TaskMatrixCard.tsx
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixCard.tsx
 #: src/modules/activities/tasks/task-matrix/components/TaskMatrixGtdFilter.tsx
 msgid "GTD tags"
 msgstr ""
@@ -13841,6 +13858,7 @@ msgstr "尚未為個別對象設定權限。"
 #. js-lingui-id: /v4YhC
 #: src/modules/activities/tasks/task-matrix/components/TaskMatrix.tsx
 #: src/modules/activities/tasks/task-matrix/components/TaskMatrixCard.tsx
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixCard.tsx
 msgid "No project"
 msgstr ""
 
@@ -13988,6 +14006,7 @@ msgid "No system objects with views found"
 msgstr "找不到具有檢視的系統物件"
 
 #. js-lingui-id: JD9x0S
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixCard.tsx
 #: src/modules/activities/tasks/task-matrix/components/TaskMatrixCard.tsx
 #: src/modules/activities/tasks/task-matrix/components/TaskMatrixGtdFilter.tsx
 msgid "No tags"
@@ -21048,6 +21067,7 @@ msgstr "無標題角色"
 
 #. js-lingui-id: CowgFX
 #: src/modules/activities/tasks/task-matrix/components/TaskMatrixCard.tsx
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixCard.tsx
 msgid "Untitled task"
 msgstr ""
 
@@ -21769,11 +21789,6 @@ msgstr ""
 #: src/modules/settings/usage/components/SettingsUsageAnalyticsSection.tsx
 msgid "View AI usage breakdown"
 msgstr "檢視 AI 使用明細"
-
-#. js-lingui-id: N6Pxr9
-#: src/modules/activities/tasks/task-matrix/components/TaskMatrix.tsx
-msgid "View all"
-msgstr ""
 
 #. js-lingui-id: lFgRxz
 #: src/modules/settings/admin-panel/ai/components/SettingsAdminAI.tsx

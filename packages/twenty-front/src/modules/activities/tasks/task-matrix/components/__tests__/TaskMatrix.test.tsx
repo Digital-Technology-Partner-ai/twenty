@@ -1,4 +1,4 @@
-import { render, screen, within } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { TaskMatrix } from '@/activities/tasks/task-matrix/components/TaskMatrix';
@@ -91,41 +91,26 @@ describe('TaskMatrix', () => {
     expect(screen.getByRole('button', { name: 'Untagged task' })).toBeVisible();
   });
 
-  it('opens all tasks in a score group when more than two share scores', async () => {
-    const user = userEvent.setup();
+  it('renders every task in a congested score group with an overflow cue', () => {
     renderMatrix([
       makeTask('a', 'First task', projects[0]),
       makeTask('b', 'Second task', projects[0]),
       makeTask('c', 'Third task', projects[0]),
+      makeTask('d', 'Fourth task', projects[0]),
+      makeTask('e', 'Fifth task', projects[0]),
     ]);
-    await user.click(screen.getByRole('button', { name: /View all 3/ }));
-    expect(screen.getByRole('dialog')).toHaveTextContent('First task');
-    expect(screen.getByRole('dialog')).toHaveTextContent('Third task');
-  });
 
-  it('closes the group modal before opening a task natively', async () => {
-    const user = userEvent.setup();
-    const onOpenTask = jest.fn();
-    render(
-      <TaskMatrix
-        onOpenTask={onOpenTask}
-        projects={projects}
-        tags={tags}
-        tasks={[
-          makeTask('a', 'First task', projects[0]),
-          makeTask('b', 'Second task', projects[0]),
-          makeTask('c', 'Third task', projects[0]),
-        ]}
-      />,
-    );
-    await user.click(screen.getByRole('button', { name: /View all 3/ }));
-    await user.click(
-      within(screen.getByRole('dialog')).getByRole('button', {
-        name: 'First task',
-      }),
-    );
-    expect(onOpenTask).toHaveBeenCalledWith('a');
-    expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'First task' })).toBeVisible();
+    expect(screen.getByRole('button', { name: 'Second task' })).toBeVisible();
+    expect(screen.getByRole('button', { name: 'Third task' })).toBeVisible();
+    expect(screen.getByRole('button', { name: 'Fourth task' })).toBeVisible();
+    expect(screen.getByRole('button', { name: 'Fifth task' })).toBeVisible();
+    expect(screen.getByRole('button', { name: '1 more' })).toBeVisible();
+    expect(screen.queryByText(/Effort:/)).not.toBeInTheDocument();
+    expect(screen.queryByText(/Impact:/)).not.toBeInTheDocument();
+    expect(
+      screen.queryByRole('button', { name: /View all/ }),
+    ).not.toBeInTheDocument();
   });
 
   it('opens the unscored tray for tasks missing either score', async () => {

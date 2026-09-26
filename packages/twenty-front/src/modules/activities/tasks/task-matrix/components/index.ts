@@ -1,5 +1,5 @@
 export { TaskMatrix } from './TaskMatrix';
-export { TaskMatrixCard, TaskMatrixCompactTask } from './TaskMatrixCard';
+export { TaskMatrixCard, TaskMatrixExpandableCard } from './TaskMatrixCard';
 export { TaskMatrixGtdFilter } from './TaskMatrixGtdFilter';
 export { TaskMatrixProjectSidebar } from './TaskMatrixProjectSidebar';
 export type {
