@@ -89,7 +89,8 @@ records to trash; it has no separate Archive action.
 
 Production browser testing caught missing translation catalog entries. The
 English catalog and compiled catalogs now include the new labels. Untranslated
-locales fall back to English. Narrow cards keep score pills on one line.
+locales fall back to English. Matrix cards no longer repeat the score labels
+already communicated by their row and column.
 
 ## Validation
 
@@ -97,6 +98,10 @@ locales fall back to English. Narrow cards keep score pills on one line.
 - Pagination exercised 425 records across three pages.
 - Required frontend lint and full TypeScript checks passed.
 - Production frontend build passed.
+- The final restored-data browser check rendered all 25 scored tasks. Its two
+  congested groups contained seven and nine cards, showed `3 more` and `5 more`,
+  paged the first cue to `3 above`, and expanded a focused card from 38px to
+  132px without adding effort or impact pills.
 - Synthetic browser checks covered desktop, short and narrow viewports.
 - Restored metadata matched all expected fields and all 11 GTD choices.
 - Native browser creation and editing passed for title, body, assignee,
@@ -134,9 +139,11 @@ image identities and recovery details. Private runtime inputs and logs are in
 ## Production deployment preparation, 26 September
 
 The exact tested image was exported and copied to Omar at
-`/home/omar/.local/share/dtp-matrix-release/matrix-release-20260925.tar.gz`.
+`/home/omar/.local/share/dtp-matrix-release/matrix-release-selected-a-20260926.tar.gz`.
 Local and remote SHA-256 values match:
-`83557aa9a0b973f29eb63378ceebf398e70ca604e67c63468af6d0e274e74e40`.
+`8d9e080ee800e4e01964fc4b09e9b0291a4ee0379a8e2a26868222254e28ee1c`.
+The release image ID is
+`sha256:8e5721f51236447bfbf26363836911a9961486260b5028b09dfffd3e8a426ac2`.
 Inspection of the final image layer confirmed that all 1,445 changed files
 are under `/app/packages/twenty-server/dist/front/`. All preceding layers
 match the current live image. No backend or migration files change.
@@ -160,6 +167,14 @@ therefore still unverified. The original task object permissions were restored,
 all disposable account/membership/role-target rows were deleted, and temporary
 credentials/tokens/cookies were removed. No production state changed.
 
-Production rollout is currently blocked by the locked KeePassXC vault on the
-Mac mini. The fresh pre-deployment backup has not yet been taken. The tested
+The selected compact-card design was accepted on 26 September. Every scored
+task now remains in the matrix as a 38px row that expands to 132px on hover or
+keyboard focus. Each score cell scrolls independently and keeps an explicit
+above/below task count visible, so congestion is discoverable without relying
+on a transient scrollbar. The repeated effort and impact pills were removed
+from matrix cards, score-cell outlines remain absent, and quadrant backgrounds
+are ten percent stronger.
+
+Production rollout is pending access to the locked KeePassXC vault on the Mac
+mini. The fresh pre-deployment backup has not yet been taken. The final tested
 image archive is copied to Omar but has not been imported or deployed.
