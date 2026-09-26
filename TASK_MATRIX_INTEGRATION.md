@@ -1,15 +1,14 @@
 # Task matrix integration
 
-## Status, 25 September 2026
+## Status, 26 September 2026
 
 The native matrix is running in a separate test CRM on Hudson's Mac mini:
 
 https://hudsons-mac-mini.taild3bcf1.ts.net:8443/objects/tasks?taskLayout=matrix
 
-Sign in with the usual CRM credentials. This is a restored copy. Production
-still runs its original image and database on Omar. Hudson approved the design
-and authorized a fresh backup and live deployment on 26 September. Deployment
-is pending the restricted-role check and access to the locked credential vault.
+Sign in with the usual CRM credentials. This is a restored copy. The selected
+compact-card design was deployed to production on Omar on 26 September after
+Hudson approved the design and authorized a fresh backup and live deployment.
 
 The reviewing device must be connected to Tailscale. The original loopback
 address works only on the Mac mini. Tailscale Serve now provides private HTTPS
@@ -136,7 +135,7 @@ See `packages/twenty-docker/dtp-matrix-staging/README.md` for staging commands,
 image identities and recovery details. Private runtime inputs and logs are in
 `/Users/hudsonrebel/.local/share/dtp-matrix-staging`.
 
-## Production deployment preparation, 26 September
+## Production deployment, 26 September
 
 The exact tested image was exported and copied to Omar at
 `/home/omar/.local/share/dtp-matrix-release/matrix-release-selected-a-20260926.tar.gz`.
@@ -158,8 +157,25 @@ to change. It recreates only `server`, waits for health, and checks that live
 environment, mounts, ports and the other four service identities are unchanged.
 On verification failure it restores the original Compose and server image.
 
-These files are preparation, not evidence of a completed production rollout.
-The fresh backup and deployment receipt will be recorded after execution.
+The fresh pre-deployment backup is
+`/var/backups/dtp-twenty/matrix-20260926T115352Z`, with archive
+`/var/backups/dtp-twenty/matrix-20260926T115352Z.tar`. It contains 107 tables
+and 73 attachments. The archive SHA-256 is
+`8c71de646a227b442645a88cd1288f1ce631e3204a8e5af7d444f1faaed835df`.
+An independently verified copy is stored on the Mac mini at
+`/Users/hudsonrebel/.local/share/dtp-matrix-staging/production-backups/predeploy-matrix-20260926T115352Z.tar`.
+
+The dry run passed before the server-only recreation. The deployment completed
+at `20260926T115603Z`, and its receipt is
+`/var/backups/dtp-twenty/matrix-20260926T115352Z/deployment-receipt.json`.
+Production now runs `dtp-twenty-matrix:20260926` with image identity
+`sha256:df8dace41f07749dce39a0ad2eadf91c6b3d445a9b64d884a1afd17b4632289a`.
+The rollback Compose file is
+`/opt/dtp/twenty-crm/compose.before-matrix-20260926T115603Z.yaml`.
+The receipt confirms that environment, storage and the worker, database,
+Redis and mail-relay service identities were unchanged. The internal and
+public health endpoints returned healthy/HTTP 200, and the production task
+matrix route returned HTTP 200 with the frontend application shell.
 
 
 Restricted-role test setup was attempted using a disposable staging user.
@@ -177,6 +193,6 @@ on a transient scrollbar. The repeated effort and impact pills were removed
 from matrix cards, score-cell outlines remain absent, and quadrant backgrounds
 are ten percent stronger.
 
-Production rollout is pending access to the locked KeePassXC vault on the Mac
-mini. The fresh pre-deployment backup has not yet been taken. The final tested
-image archive is copied to Omar but has not been imported or deployed.
+Production rollout completed successfully on 26 September. The server is
+healthy on the exact staging-tested release image, with the fresh backup and
+rollback Compose file retained at the paths above.
