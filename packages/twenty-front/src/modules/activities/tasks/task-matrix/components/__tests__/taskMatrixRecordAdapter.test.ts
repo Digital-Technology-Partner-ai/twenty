@@ -9,6 +9,7 @@ describe('taskMatrixRecordAdapter', () => {
         title: 'Contact supplier',
         effort: 'LOW',
         impact: 'HIGH',
+        status: 'DONE',
         gtdTags: ['EMAIL', 'CUSTOM_CONTEXT'],
         assignee: {
           id: 'person-one',
@@ -22,6 +23,7 @@ describe('taskMatrixRecordAdapter', () => {
       title: 'Contact supplier',
       effort: 'low',
       impact: 'high',
+      status: 'DONE',
       gtdTagIds: ['EMAIL', 'CUSTOM_CONTEXT'],
       owner: { id: 'person-one', name: 'Sam Taylor' },
       project: { id: 'project-one', name: 'Website' },
@@ -34,6 +36,7 @@ describe('taskMatrixRecordAdapter', () => {
     ).toMatchObject({
       effort: null,
       impact: null,
+      status: 'TODO',
       owner: null,
       project: null,
       gtdTagIds: [],

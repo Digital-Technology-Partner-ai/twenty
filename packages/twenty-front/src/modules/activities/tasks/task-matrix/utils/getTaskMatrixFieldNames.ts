@@ -28,3 +28,9 @@ export const getTaskMatrixTagOptions = (
 ) =>
   objectMetadataItem.readableFields.find((field) => field.name === 'gtdTags')
     ?.options ?? [];
+
+export const getTaskMatrixStatusOptions = (
+  objectMetadataItem: EnrichedObjectMetadataItem,
+) =>
+  objectMetadataItem.readableFields.find((field) => field.name === 'status')
+    ?.options ?? [];

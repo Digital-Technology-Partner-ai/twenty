@@ -316,6 +316,7 @@ msgstr "{0} retries"
 #. placeholder {0}: selectedProjectIds.size
 #: src/modules/activities/tasks/task-matrix/components/TaskMatrixGtdFilter.tsx
 #: src/modules/activities/tasks/task-matrix/components/TaskMatrixProjectSidebar.tsx
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixStatusFilter.tsx
 #: src/modules/object-record/record-index/components/RecordIndexPageHeader.tsx
 #: src/modules/side-panel/components/SidePanelMultipleRecordsInfo.tsx
 msgid "{0} selected"
@@ -2188,6 +2189,11 @@ msgstr "All reasons"
 #: src/modules/settings/roles/components/SettingsRolesList.tsx
 msgid "All roles"
 msgstr "All roles"
+
+#. js-lingui-id: jBtpMP
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixStatusFilter.tsx
+msgid "All statuses"
+msgstr "All statuses"
 
 #. js-lingui-id: CHvT6e
 #: src/modules/navigation-menu-item/edit/side-panel/components/SidePanelNewSidebarItemObjectSystemPickerSubPage.tsx
@@ -4082,6 +4088,11 @@ msgstr "Choose between Short and Full"
 msgid "Choose plan"
 msgstr "Choose plan"
 
+#. js-lingui-id: Nso3G9
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrix.tsx
+msgid "Choose task statuses"
+msgstr "Choose task statuses"
+
 #. js-lingui-id: YcrXB2
 #: src/modules/settings/data-model/fields/forms/currency/components/SettingsDataModelFieldCurrencyForm.tsx
 msgid "Choose the default currency that will apply"
@@ -4196,6 +4207,7 @@ msgstr "Clear"
 #. js-lingui-id: yYxB17
 #: src/modules/activities/tasks/task-matrix/components/TaskMatrixGtdFilter.tsx
 #: src/modules/activities/tasks/task-matrix/components/TaskMatrixProjectSidebar.tsx
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixStatusFilter.tsx
 msgid "Clear all"
 msgstr "Clear all"
 
@@ -7099,6 +7111,7 @@ msgstr "Don't sync emails from team@ support@ noreply@..."
 
 #. js-lingui-id: DPfwMq
 #: src/modules/activities/tasks/task-matrix/components/TaskMatrixGtdFilter.tsx
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixStatusFilter.tsx
 #: src/modules/page-layout/widgets/fields/components/FieldsConfigurationGroupRenameInput.tsx
 msgid "Done"
 msgstr "Done"
@@ -17777,6 +17790,7 @@ msgstr "Select Action"
 #. js-lingui-id: wgNoIs
 #: src/modules/activities/tasks/task-matrix/components/TaskMatrixGtdFilter.tsx
 #: src/modules/activities/tasks/task-matrix/components/TaskMatrixProjectSidebar.tsx
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixStatusFilter.tsx
 msgid "Select all"
 msgstr "Select all"
 
@@ -18804,6 +18818,7 @@ msgid "Static text shared across all record pages"
 msgstr "Static text shared across all record pages"
 
 #. js-lingui-id: uAQUqI
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixStatusFilter.tsx
 #: src/modules/ai/components/AiChatThreadFilterDropdownRootMenu.tsx
 #: src/modules/ai/components/AiChatThreadFilterDropdownStatusMenu.tsx
 #: src/modules/settings/accounts/components/SettingsConnectedAccountsTableHeader.tsx

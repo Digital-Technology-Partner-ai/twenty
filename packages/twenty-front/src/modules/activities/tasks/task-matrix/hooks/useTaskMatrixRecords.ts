@@ -11,6 +11,7 @@ import {
 } from 'twenty-shared/types';
 import {
   getTaskMatrixFieldNames,
+  getTaskMatrixStatusOptions,
   getTaskMatrixTagOptions,
 } from '@/activities/tasks/task-matrix/utils/getTaskMatrixFieldNames';
 import { type TaskMatrixRecord } from '@/activities/tasks/task-matrix/types/TaskMatrixRecord';
@@ -125,6 +126,7 @@ export const useTaskMatrixRecords = () => {
     records,
     objectMetadataItem,
     fieldNames,
+    statusOptions: getTaskMatrixStatusOptions(objectMetadataItem),
     tagOptions: getTaskMatrixTagOptions(objectMetadataItem),
     loading: loading || fetchingAllPages,
     error: error ?? paginationError,

@@ -4,6 +4,7 @@ import userEvent from '@testing-library/user-event';
 import { TaskMatrix } from '@/activities/tasks/task-matrix/components/TaskMatrix';
 import {
   type TaskMatrixProject,
+  type TaskMatrixStatus,
   type TaskMatrixTag,
   type TaskMatrixTask,
 } from '@/activities/tasks/task-matrix/components/types';
@@ -16,11 +17,17 @@ const tags: TaskMatrixTag[] = [
   { id: 'next', label: 'Next action' },
   { id: 'waiting', label: 'Waiting' },
 ];
+const statuses: TaskMatrixStatus[] = [
+  { id: 'TODO', label: 'To do' },
+  { id: 'IN_PROGRESS', label: 'In progress' },
+  { id: 'DONE', label: 'Done' },
+];
 const makeTask = (
   id: string,
   title: string,
   project: TaskMatrixProject | null,
   gtdTagIds: string[] = ['next'],
+  status = 'TODO',
 ): TaskMatrixTask => ({
   dueAt: null,
   effort: 'low',
@@ -29,6 +36,7 @@ const makeTask = (
   impact: 'high',
   owner: { id: `owner-${id}`, name: 'Alex Owner' },
   project,
+  status,
   title,
 });
 
@@ -37,6 +45,7 @@ const renderMatrix = (tasks: TaskMatrixTask[]) =>
     <TaskMatrix
       onOpenTask={jest.fn()}
       projects={projects}
+      statuses={statuses}
       tags={tags}
       tasks={tasks}
     />,
@@ -89,6 +98,27 @@ describe('TaskMatrix', () => {
     ).not.toBeInTheDocument();
     await user.click(screen.getByRole('checkbox', { name: 'No tags' }));
     expect(screen.getByRole('button', { name: 'Untagged task' })).toBeVisible();
+  });
+
+  it('can hide completed tasks with the status filter', async () => {
+    const user = userEvent.setup();
+    renderMatrix([
+      makeTask('a', 'To do task', projects[0], ['next'], 'TODO'),
+      makeTask('b', 'Active task', projects[0], ['next'], 'IN_PROGRESS'),
+      makeTask('c', 'Completed task', projects[0], ['next'], 'DONE'),
+    ]);
+
+    await user.click(screen.getByRole('button', { name: /Status/ }));
+    await user.click(screen.getByRole('checkbox', { name: 'Done' }));
+
+    expect(screen.getByRole('button', { name: 'To do task' })).toBeVisible();
+    expect(screen.getByRole('button', { name: 'Active task' })).toBeVisible();
+    expect(
+      screen.queryByRole('button', { name: 'Completed task' }),
+    ).not.toBeInTheDocument();
+    expect(
+      screen.getByRole('button', { name: /Status 2 selected/ }),
+    ).toBeVisible();
   });
 
   it('renders every task in a congested score group with an overflow cue', () => {

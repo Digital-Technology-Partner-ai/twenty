@@ -1,4 +1,7 @@
-import { getTaskMatrixFieldNames } from '@/activities/tasks/task-matrix/utils/getTaskMatrixFieldNames';
+import {
+  getTaskMatrixFieldNames,
+  getTaskMatrixStatusOptions,
+} from '@/activities/tasks/task-matrix/utils/getTaskMatrixFieldNames';
 import { type EnrichedObjectMetadataItem } from '@/object-metadata/types/EnrichedObjectMetadataItem';
 
 describe('getTaskMatrixFieldNames', () => {
@@ -9,6 +12,7 @@ describe('getTaskMatrixFieldNames', () => {
         { name: 'effort' },
         { name: 'secretField' },
         { name: 'gtdTags' },
+        { name: 'status' },
       ],
     } as EnrichedObjectMetadataItem;
 
@@ -16,6 +20,19 @@ describe('getTaskMatrixFieldNames', () => {
       'title',
       'effort',
       'gtdTags',
+      'status',
     ]);
+  });
+
+  it('returns the readable status field options', () => {
+    const statusOptions = [
+      { value: 'TODO', label: 'To do' },
+      { value: 'DONE', label: 'Done' },
+    ];
+    const metadata = {
+      readableFields: [{ name: 'status', options: statusOptions }],
+    } as EnrichedObjectMetadataItem;
+
+    expect(getTaskMatrixStatusOptions(metadata)).toEqual(statusOptions);
   });
 });

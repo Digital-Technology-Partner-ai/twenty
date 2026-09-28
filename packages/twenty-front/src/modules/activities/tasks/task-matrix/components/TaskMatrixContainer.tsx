@@ -16,8 +16,15 @@ const StyledNotice = styled.div`
 `;
 
 export const TaskMatrixContainer = () => {
-  const { records, fieldNames, tagOptions, loading, error, retry } =
-    useTaskMatrixRecords();
+  const {
+    records,
+    fieldNames,
+    statusOptions,
+    tagOptions,
+    loading,
+    error,
+    retry,
+  } = useTaskMatrixRecords();
   const { openRecordInSidePanel } = useOpenRecordInSidePanel();
   const tasks = useMemo(() => records.map(taskMatrixRecordAdapter), [records]);
   const projects = useMemo(() => {
@@ -34,6 +41,14 @@ export const TaskMatrixContainer = () => {
     () =>
       tagOptions.map((option) => ({ id: option.value, label: option.label })),
     [tagOptions],
+  );
+  const statuses = useMemo(
+    () =>
+      statusOptions.map((option) => ({
+        id: option.value,
+        label: option.label,
+      })),
+    [statusOptions],
   );
 
   if (!fieldNames.includes('effort') || !fieldNames.includes('impact')) {
@@ -62,6 +77,7 @@ export const TaskMatrixContainer = () => {
       <TaskMatrix
         tasks={tasks}
         projects={projects}
+        statuses={statuses}
         tags={tags}
         onOpenTask={(recordId) =>
           openRecordInSidePanel({

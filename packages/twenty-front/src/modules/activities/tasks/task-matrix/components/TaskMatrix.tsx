@@ -21,6 +21,7 @@ import { TaskMatrixGroup } from './TaskMatrixGroup';
 import { TaskMatrixModal } from './TaskMatrixModal';
 import { TaskMatrixAxes } from './TaskMatrixAxes';
 import { TaskMatrixProjectSidebar } from './TaskMatrixProjectSidebar';
+import { TaskMatrixStatusFilter } from './TaskMatrixStatusFilter';
 import { type TaskMatrixProps, type TaskMatrixTask } from './types';
 
 const NO_PROJECT_ID = '__no_project__';
@@ -38,6 +39,7 @@ const projectIdFor = (task: TaskMatrixTask) =>
 export const TaskMatrix = ({
   onOpenTask,
   projects,
+  statuses,
   tags,
   tasks,
 }: TaskMatrixProps) => {
@@ -53,6 +55,8 @@ export const TaskMatrix = ({
   const [selectedTagIds, setSelectedTagIds] = useState<Set<string> | null>(
     null,
   );
+  const [selectedStatusIds, setSelectedStatusIds] =
+    useState<Set<string> | null>(null);
   const [taskQuery, setTaskQuery] = useState('');
   const [isUnscoredModalOpen, setIsUnscoredModalOpen] = useState(false);
   const modalRef = useRef<HTMLDialogElement>(null);
@@ -86,7 +90,7 @@ export const TaskMatrix = ({
     });
     return counts;
   }, [scopedTasks]);
-  const visibleTasks = useMemo(
+  const gtdFilteredTasks = useMemo(
     () =>
       scopedTasks.filter(
         (task) =>
@@ -96,6 +100,21 @@ export const TaskMatrix = ({
             : task.gtdTagIds.some((id) => selectedTagIds.has(id))),
       ),
     [scopedTasks, selectedTagIds],
+  );
+  const statusCounts = useMemo(() => {
+    const counts = new Map<string, number>();
+    gtdFilteredTasks.forEach((task) =>
+      counts.set(task.status, (counts.get(task.status) ?? 0) + 1),
+    );
+    return counts;
+  }, [gtdFilteredTasks]);
+  const visibleTasks = useMemo(
+    () =>
+      gtdFilteredTasks.filter(
+        (task) =>
+          selectedStatusIds === null || selectedStatusIds.has(task.status),
+      ),
+    [gtdFilteredTasks, selectedStatusIds],
   );
   const groups = useMemo(
     () =>
@@ -114,11 +133,15 @@ export const TaskMatrix = ({
     selectedProjectIds ?? new Set(allProjects.map(({ id }) => id));
   const effectiveTagIds =
     selectedTagIds ?? new Set([...tags.map(({ id }) => id), NO_TAGS_ID]);
+  const effectiveStatusIds =
+    selectedStatusIds ?? new Set(statuses.map(({ id }) => id));
   const modalTasks = isUnscoredModalOpen ? unscored : [];
   const changeProjects = (next: Set<string>) =>
     setSelectedProjectIds(next.size === allProjects.length ? null : next);
   const changeTags = (next: Set<string>) =>
     setSelectedTagIds(next.size === tags.length + 1 ? null : next);
+  const changeStatuses = (next: Set<string>) =>
+    setSelectedStatusIds(next.size === statuses.length ? null : next);
 
   return (
     <StyledMatrixPage>
@@ -148,6 +171,14 @@ export const TaskMatrix = ({
             tagCounts={tagCounts}
             tags={tags}
           />
+          {statuses.length > 0 && (
+            <TaskMatrixStatusFilter
+              onSelectedStatusIdsChange={changeStatuses}
+              selectedStatusIds={effectiveStatusIds}
+              statusCounts={statusCounts}
+              statuses={statuses}
+            />
+          )}
         </StyledToolbarActions>
       </StyledMatrixToolbar>
       <StyledMatrixBody>
@@ -192,12 +223,15 @@ export const TaskMatrix = ({
                       ? t`Choose your projects`
                       : selectedTagIds?.size === 0
                         ? t`Choose your GTD tags`
-                        : t`No matching tasks`}
+                        : selectedStatusIds?.size === 0
+                          ? t`Choose task statuses`
+                          : t`No matching tasks`}
                   </strong>
                   <button
                     onClick={() => {
                       setSelectedProjectIds(null);
                       setSelectedTagIds(null);
+                      setSelectedStatusIds(null);
                       setTaskQuery('');
                     }}
                   >{t`Show all`}</button>

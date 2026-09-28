@@ -18,6 +18,11 @@ export type TaskMatrixTag = {
   label: string;
 };
 
+export type TaskMatrixStatus = {
+  id: string;
+  label: string;
+};
+
 export type TaskMatrixTask = {
   dueAt?: string | null;
   effort: TaskMatrixScore | null;
@@ -26,12 +31,14 @@ export type TaskMatrixTask = {
   impact: TaskMatrixScore | null;
   owner: TaskMatrixOwner | null;
   project: TaskMatrixProject | null;
+  status: string;
   title: string;
 };
 
 export type TaskMatrixProps = {
   onOpenTask: (taskId: string) => void;
   projects: TaskMatrixProject[];
+  statuses: TaskMatrixStatus[];
   tags: TaskMatrixTag[];
   tasks: TaskMatrixTask[];
 };

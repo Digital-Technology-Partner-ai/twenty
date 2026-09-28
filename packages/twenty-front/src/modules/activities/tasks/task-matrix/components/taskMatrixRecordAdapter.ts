@@ -47,6 +47,7 @@ export const taskMatrixRecordAdapter = (
   impact: score(record.impact),
   dueAt: record.dueAt,
   gtdTagIds: record.gtdTags ?? [],
+  status: typeof record.status === 'string' ? record.status : 'TODO',
   project: record.project
     ? {
         id: record.project.id,

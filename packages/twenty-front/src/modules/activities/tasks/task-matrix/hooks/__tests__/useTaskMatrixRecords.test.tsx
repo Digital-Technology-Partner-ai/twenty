@@ -41,13 +41,18 @@ if (!taskMetadata) {
   throw new Error('Task metadata fixture is missing');
 }
 
-const matrixFields = ['effort', 'impact', 'gtdTags', 'project', 'assignee'].map(
-  (name) => ({
-    ...taskMetadata.fields[0],
-    id: `matrix-${name}`,
-    name,
-  }),
-);
+const matrixFields = [
+  'effort',
+  'impact',
+  'gtdTags',
+  'status',
+  'project',
+  'assignee',
+].map((name) => ({
+  ...taskMetadata.fields[0],
+  id: `matrix-${name}`,
+  name,
+}));
 const metadata = {
   ...taskMetadata,
   fields: [...taskMetadata.fields, ...matrixFields],

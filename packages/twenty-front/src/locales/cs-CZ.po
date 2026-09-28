@@ -321,6 +321,7 @@ msgstr "{0} opakování"
 #. placeholder {0}: selectedProjectIds.size
 #: src/modules/activities/tasks/task-matrix/components/TaskMatrixGtdFilter.tsx
 #: src/modules/activities/tasks/task-matrix/components/TaskMatrixProjectSidebar.tsx
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixStatusFilter.tsx
 #: src/modules/object-record/record-index/components/RecordIndexPageHeader.tsx
 #: src/modules/side-panel/components/SidePanelMultipleRecordsInfo.tsx
 msgid "{0} selected"
@@ -2193,6 +2194,11 @@ msgstr "Všechny důvody"
 #: src/modules/settings/roles/components/SettingsRolesList.tsx
 msgid "All roles"
 msgstr "Všechny role"
+
+#. js-lingui-id: jBtpMP
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixStatusFilter.tsx
+msgid "All statuses"
+msgstr ""
 
 #. js-lingui-id: CHvT6e
 #: src/modules/navigation-menu-item/edit/side-panel/components/SidePanelNewSidebarItemObjectSystemPickerSubPage.tsx
@@ -4087,6 +4093,11 @@ msgstr "Vyberte mezi Krátkým a Plným"
 msgid "Choose plan"
 msgstr "Vybrat tarif"
 
+#. js-lingui-id: Nso3G9
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrix.tsx
+msgid "Choose task statuses"
+msgstr ""
+
 #. js-lingui-id: YcrXB2
 #: src/modules/settings/data-model/fields/forms/currency/components/SettingsDataModelFieldCurrencyForm.tsx
 msgid "Choose the default currency that will apply"
@@ -4201,6 +4212,7 @@ msgstr "Vymazat"
 #. js-lingui-id: yYxB17
 #: src/modules/activities/tasks/task-matrix/components/TaskMatrixGtdFilter.tsx
 #: src/modules/activities/tasks/task-matrix/components/TaskMatrixProjectSidebar.tsx
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixStatusFilter.tsx
 msgid "Clear all"
 msgstr ""
 
@@ -7104,6 +7116,7 @@ msgstr "Nesynchronizovat e-maily od team@ support@ noreply@..."
 
 #. js-lingui-id: DPfwMq
 #: src/modules/activities/tasks/task-matrix/components/TaskMatrixGtdFilter.tsx
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixStatusFilter.tsx
 #: src/modules/page-layout/widgets/fields/components/FieldsConfigurationGroupRenameInput.tsx
 msgid "Done"
 msgstr "Hotovo"
@@ -17782,6 +17795,7 @@ msgstr "Vybrat akci"
 #. js-lingui-id: wgNoIs
 #: src/modules/activities/tasks/task-matrix/components/TaskMatrixGtdFilter.tsx
 #: src/modules/activities/tasks/task-matrix/components/TaskMatrixProjectSidebar.tsx
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixStatusFilter.tsx
 msgid "Select all"
 msgstr ""
 
@@ -18809,6 +18823,7 @@ msgid "Static text shared across all record pages"
 msgstr "Statický text sdílený mezi všemi stránkami záznamů"
 
 #. js-lingui-id: uAQUqI
+#: src/modules/activities/tasks/task-matrix/components/TaskMatrixStatusFilter.tsx
 #: src/modules/ai/components/AiChatThreadFilterDropdownRootMenu.tsx
 #: src/modules/ai/components/AiChatThreadFilterDropdownStatusMenu.tsx
 #: src/modules/settings/accounts/components/SettingsConnectedAccountsTableHeader.tsx
