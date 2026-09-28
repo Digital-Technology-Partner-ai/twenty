@@ -6675,6 +6675,13 @@ msgstr "Radera rollen permanent"
 msgid "Delete Skill"
 msgstr "Ta bort färdighet"
 
+#. js-lingui-id: qiaHuj
+#: src/modules/activities/tasks/components/TaskRecordDeleteButton.tsx
+#: src/modules/activities/tasks/components/TaskRecordDeleteButton.tsx
+#: src/modules/activities/tasks/components/TaskRecordDeleteButton.tsx
+msgid "Delete task"
+msgstr ""
+
 #. js-lingui-id: DgHnjS
 #: src/pages/settings/ai/components/SettingsAgentSettingsTab.tsx
 msgid "Delete this agent"
@@ -6694,6 +6701,11 @@ msgstr "Ta bort denna integration"
 #: src/modules/settings/roles/role-settings/components/SettingsRoleSettings.tsx
 msgid "Delete this role and assign a new role to its members"
 msgstr "Ta bort den här rollen och tilldela en ny roll till dess medlemmar"
+
+#. js-lingui-id: R4twK2
+#: src/modules/activities/tasks/components/TaskRecordDeleteButton.tsx
+msgid "Delete this task?"
+msgstr ""
 
 #. js-lingui-id: UvEQr6
 #: src/pages/settings/ai/SettingsToolDetail.tsx
@@ -8759,6 +8771,11 @@ msgstr "Det gick inte att radera jobben. Försök igen senare."
 #: src/pages/settings/ai/components/SettingsAgentSkillsTab.tsx
 msgid "Failed to delete skill"
 msgstr "Det gick inte att ta bort färdigheten"
+
+#. js-lingui-id: +OEiMC
+#: src/modules/activities/tasks/components/TaskRecordDeleteButton.tsx
+msgid "Failed to delete task"
+msgstr ""
 
 #. js-lingui-id: AUprM8
 #: src/pages/settings/ai/SettingsToolDetail.tsx
@@ -20081,6 +20098,11 @@ msgstr "Den här underdomänen är reserverad"
 #: src/modules/settings/admin-panel/components/SettingsAdminWorkspaceCreditGrantsTable.tsx
 msgid "This takes {0} credits back off this workspace straight away. Revoking cannot be undone."
 msgstr "Detta tar omedelbart tillbaka {0} krediter från den här arbetsytan. Återkallelse kan inte ångras."
+
+#. js-lingui-id: dIDcn8
+#: src/modules/activities/tasks/components/TaskRecordDeleteButton.tsx
+msgid "This task will be moved to trash."
+msgstr ""
 
 #. js-lingui-id: MMGDfe
 #: src/modules/settings/admin-panel/config-variables/components/ConfigVariableHelpText.tsx

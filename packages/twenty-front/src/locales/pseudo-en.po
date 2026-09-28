@@ -6670,6 +6670,13 @@ msgstr ""
 msgid "Delete Skill"
 msgstr ""
 
+#. js-lingui-id: qiaHuj
+#: src/modules/activities/tasks/components/TaskRecordDeleteButton.tsx
+#: src/modules/activities/tasks/components/TaskRecordDeleteButton.tsx
+#: src/modules/activities/tasks/components/TaskRecordDeleteButton.tsx
+msgid "Delete task"
+msgstr ""
+
 #. js-lingui-id: DgHnjS
 #: src/pages/settings/ai/components/SettingsAgentSettingsTab.tsx
 msgid "Delete this agent"
@@ -6688,6 +6695,11 @@ msgstr ""
 #. js-lingui-id: c0vHQI
 #: src/modules/settings/roles/role-settings/components/SettingsRoleSettings.tsx
 msgid "Delete this role and assign a new role to its members"
+msgstr ""
+
+#. js-lingui-id: R4twK2
+#: src/modules/activities/tasks/components/TaskRecordDeleteButton.tsx
+msgid "Delete this task?"
 msgstr ""
 
 #. js-lingui-id: UvEQr6
@@ -8753,6 +8765,11 @@ msgstr ""
 #. js-lingui-id: bmwWKk
 #: src/pages/settings/ai/components/SettingsAgentSkillsTab.tsx
 msgid "Failed to delete skill"
+msgstr ""
+
+#. js-lingui-id: +OEiMC
+#: src/modules/activities/tasks/components/TaskRecordDeleteButton.tsx
+msgid "Failed to delete task"
 msgstr ""
 
 #. js-lingui-id: AUprM8
@@ -20014,6 +20031,11 @@ msgstr ""
 #. placeholder {0}: formatCredits(grantPendingRevocation.amount)
 #: src/modules/settings/admin-panel/components/SettingsAdminWorkspaceCreditGrantsTable.tsx
 msgid "This takes {0} credits back off this workspace straight away. Revoking cannot be undone."
+msgstr ""
+
+#. js-lingui-id: dIDcn8
+#: src/modules/activities/tasks/components/TaskRecordDeleteButton.tsx
+msgid "This task will be moved to trash."
 msgstr ""
 
 #. js-lingui-id: MMGDfe

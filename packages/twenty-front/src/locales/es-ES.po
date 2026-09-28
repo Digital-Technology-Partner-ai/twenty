@@ -6675,6 +6675,13 @@ msgstr "Eliminar rol permanentemente"
 msgid "Delete Skill"
 msgstr "Eliminar habilidad"
 
+#. js-lingui-id: qiaHuj
+#: src/modules/activities/tasks/components/TaskRecordDeleteButton.tsx
+#: src/modules/activities/tasks/components/TaskRecordDeleteButton.tsx
+#: src/modules/activities/tasks/components/TaskRecordDeleteButton.tsx
+msgid "Delete task"
+msgstr ""
+
 #. js-lingui-id: DgHnjS
 #: src/pages/settings/ai/components/SettingsAgentSettingsTab.tsx
 msgid "Delete this agent"
@@ -6694,6 +6701,11 @@ msgstr "Eliminar esta integración"
 #: src/modules/settings/roles/role-settings/components/SettingsRoleSettings.tsx
 msgid "Delete this role and assign a new role to its members"
 msgstr "Eliminar este rol y asignar un nuevo rol a sus miembros"
+
+#. js-lingui-id: R4twK2
+#: src/modules/activities/tasks/components/TaskRecordDeleteButton.tsx
+msgid "Delete this task?"
+msgstr ""
 
 #. js-lingui-id: UvEQr6
 #: src/pages/settings/ai/SettingsToolDetail.tsx
@@ -8759,6 +8771,11 @@ msgstr "Error al eliminar trabajos. Por favor, inténtelo de nuevo más tarde."
 #: src/pages/settings/ai/components/SettingsAgentSkillsTab.tsx
 msgid "Failed to delete skill"
 msgstr "No se pudo eliminar la habilidad"
+
+#. js-lingui-id: +OEiMC
+#: src/modules/activities/tasks/components/TaskRecordDeleteButton.tsx
+msgid "Failed to delete task"
+msgstr ""
 
 #. js-lingui-id: AUprM8
 #: src/pages/settings/ai/SettingsToolDetail.tsx
@@ -20075,6 +20092,11 @@ msgstr "Este subdominio está reservado"
 #: src/modules/settings/admin-panel/components/SettingsAdminWorkspaceCreditGrantsTable.tsx
 msgid "This takes {0} credits back off this workspace straight away. Revoking cannot be undone."
 msgstr "Esto retira inmediatamente {0} créditos de este espacio de trabajo. La revocación no se puede deshacer."
+
+#. js-lingui-id: dIDcn8
+#: src/modules/activities/tasks/components/TaskRecordDeleteButton.tsx
+msgid "This task will be moved to trash."
+msgstr ""
 
 #. js-lingui-id: MMGDfe
 #: src/modules/settings/admin-panel/config-variables/components/ConfigVariableHelpText.tsx

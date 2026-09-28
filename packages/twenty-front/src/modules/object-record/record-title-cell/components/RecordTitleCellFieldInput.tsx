@@ -8,11 +8,13 @@ import { RecordTitleFullNameFieldInput } from '@/object-record/record-title-cell
 
 type RecordTitleCellFieldInputProps = {
   instanceId: string;
+  multiline?: boolean;
   sizeVariant?: 'xs' | 'sm' | 'md';
 };
 
 export const RecordTitleCellFieldInput = ({
   instanceId,
+  multiline,
   sizeVariant,
 }: RecordTitleCellFieldInputProps) => {
   const { fieldDefinition } = useContext(FieldContext);
@@ -26,6 +28,7 @@ export const RecordTitleCellFieldInput = ({
       {isFieldText(fieldDefinition) ? (
         <RecordTitleCellTextFieldInput
           instanceId={instanceId}
+          multiline={multiline}
           sizeVariant={sizeVariant}
         />
       ) : isFieldFullName(fieldDefinition) ? (

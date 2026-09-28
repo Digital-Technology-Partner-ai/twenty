@@ -5,7 +5,7 @@ import { RecordTitleCellContainerType } from '@/object-record/record-title-cell/
 import { HeaderIdentifier } from '@/ui/layout/page/components/HeaderIdentifier';
 import { styled } from '@linaria/react';
 import { useRef, type ChangeEvent, type MouseEvent } from 'react';
-import { AppPath } from 'twenty-shared/types';
+import { AppPath, CoreObjectNameSingular } from 'twenty-shared/types';
 import { getAppPath, isDefined } from 'twenty-shared/utils';
 import { UndecoratedLink } from 'twenty-ui/navigation';
 import { useNavigateApp } from '~/hooks/useNavigateApp';
@@ -45,6 +45,8 @@ export const RecordIdentifierBarTitle = ({
 
   const isAvatarEditable = isDefined(onUploadPicture);
   const isInSidePanel = variant === 'side-panel';
+  const isMultilineTaskTitle =
+    isInSidePanel && objectNameSingular === CoreObjectNameSingular.Task;
 
   const handleRecordLinkClick = (event: MouseEvent<HTMLAnchorElement>) => {
     if (
@@ -70,6 +72,7 @@ export const RecordIdentifierBarTitle = ({
   const title = (
     <FieldContext.Provider value={titleFieldContextValue}>
       <RecordTitleCell
+        multiline={isMultilineTaskTitle}
         sizeVariant="sm"
         containerType={
           isInSidePanel

@@ -446,7 +446,7 @@ export const StyledExpandableCardSummary = styled.span`
   display: flex;
   flex-shrink: 0;
   gap: ${themeCssVariables.spacing[2]};
-  height: 36px;
+  min-height: 36px;
   min-width: 0;
   width: 100%;
 
@@ -462,6 +462,16 @@ export const StyledExpandableCardTitle = styled.span`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+
+  ${StyledExpandableCard}:hover &,
+  ${StyledExpandableCard}:focus-visible & {
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    display: -webkit-box;
+    overflow-wrap: anywhere;
+    text-overflow: clip;
+    white-space: normal;
+  }
 `;
 
 export const StyledExpandableCardDetails = styled.span`

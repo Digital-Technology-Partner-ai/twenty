@@ -1,9 +1,11 @@
 import { getObjectMetadataIdentifierFields } from '@/object-metadata/utils/getObjectMetadataIdentifierFields';
+import { TaskRecordDeleteButton } from '@/activities/tasks/components/TaskRecordDeleteButton';
 import { ObjectRecordShowPageBreadcrumb } from '@/object-record/record-show/components/ObjectRecordShowPageBreadcrumb';
 import { RecordIdentifierBarTitle } from '@/object-record/record-show/components/RecordIdentifierBarTitle';
 import { useRecordShowPagePagination } from '@/object-record/record-show/hooks/useRecordShowPagePagination';
 import { useWorkspaceSurface } from '@/ui/layout/hooks/useWorkspaceSurface';
 import { PageCardHeader } from '@/ui/layout/page/components/PageCardHeader';
+import { CoreObjectNameSingular } from 'twenty-shared/types';
 
 type RecordShowPageHeaderProps = {
   objectNameSingular: string;
@@ -48,18 +50,25 @@ const RecordShowPageMainHeader = ({
 const RecordShowPagePanelHeader = ({
   objectNameSingular,
   objectRecordId,
-}: RecordShowPagePanelHeaderProps) => (
-  <PageCardHeader
-    title={
-      <RecordIdentifierBarTitle
-        objectNameSingular={objectNameSingular}
-        objectRecordId={objectRecordId}
-        variant="side-panel"
-        recordLinkSurface="main"
-      />
-    }
-  />
-);
+}: RecordShowPagePanelHeaderProps) => {
+  const isTask = objectNameSingular === CoreObjectNameSingular.Task;
+
+  return (
+    <PageCardHeader
+      actionButton={
+        isTask ? <TaskRecordDeleteButton taskId={objectRecordId} /> : undefined
+      }
+      title={
+        <RecordIdentifierBarTitle
+          objectNameSingular={objectNameSingular}
+          objectRecordId={objectRecordId}
+          variant="side-panel"
+          recordLinkSurface="main"
+        />
+      }
+    />
+  );
+};
 
 export const RecordShowPageHeader = ({
   objectNameSingular,

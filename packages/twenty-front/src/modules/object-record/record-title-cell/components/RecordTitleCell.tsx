@@ -27,12 +27,14 @@ type RecordTitleCellProps = {
   loading?: boolean;
   sizeVariant?: 'xs' | 'sm' | 'md';
   containerType: RecordTitleCellContainerType;
+  multiline?: boolean;
 };
 
 export const RecordTitleCell = ({
   loading,
   sizeVariant,
   containerType,
+  multiline = false,
 }: RecordTitleCellProps) => {
   const { fieldDefinition, recordId, isRecordFieldReadOnly } =
     useContext(FieldContext);
@@ -115,12 +117,16 @@ export const RecordTitleCell = ({
             fieldName: fieldDefinition.metadata.fieldName,
             prefix: containerType,
           })}
+          multiline={multiline}
           sizeVariant={sizeVariant}
         />
       </FieldInputEventContext.Provider>
     ),
     displayModeContent: (
-      <RecordTitleCellFieldDisplay containerType={containerType} />
+      <RecordTitleCellFieldDisplay
+        containerType={containerType}
+        multiline={multiline}
+      />
     ),
     editModeContentOnly: isFieldInputOnly,
     loading: loading,

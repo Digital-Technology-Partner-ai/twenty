@@ -6670,6 +6670,13 @@ msgstr "Delete Role Permanently"
 msgid "Delete Skill"
 msgstr "Delete Skill"
 
+#. js-lingui-id: qiaHuj
+#: src/modules/activities/tasks/components/TaskRecordDeleteButton.tsx
+#: src/modules/activities/tasks/components/TaskRecordDeleteButton.tsx
+#: src/modules/activities/tasks/components/TaskRecordDeleteButton.tsx
+msgid "Delete task"
+msgstr "Delete task"
+
 #. js-lingui-id: DgHnjS
 #: src/pages/settings/ai/components/SettingsAgentSettingsTab.tsx
 msgid "Delete this agent"
@@ -6689,6 +6696,11 @@ msgstr "Delete this integration"
 #: src/modules/settings/roles/role-settings/components/SettingsRoleSettings.tsx
 msgid "Delete this role and assign a new role to its members"
 msgstr "Delete this role and assign a new role to its members"
+
+#. js-lingui-id: R4twK2
+#: src/modules/activities/tasks/components/TaskRecordDeleteButton.tsx
+msgid "Delete this task?"
+msgstr "Delete this task?"
 
 #. js-lingui-id: UvEQr6
 #: src/pages/settings/ai/SettingsToolDetail.tsx
@@ -8754,6 +8766,11 @@ msgstr "Failed to delete jobs. Please try again later."
 #: src/pages/settings/ai/components/SettingsAgentSkillsTab.tsx
 msgid "Failed to delete skill"
 msgstr "Failed to delete skill"
+
+#. js-lingui-id: +OEiMC
+#: src/modules/activities/tasks/components/TaskRecordDeleteButton.tsx
+msgid "Failed to delete task"
+msgstr "Failed to delete task"
 
 #. js-lingui-id: AUprM8
 #: src/pages/settings/ai/SettingsToolDetail.tsx
@@ -20070,6 +20087,11 @@ msgstr "This subdomain is reserved"
 #: src/modules/settings/admin-panel/components/SettingsAdminWorkspaceCreditGrantsTable.tsx
 msgid "This takes {0} credits back off this workspace straight away. Revoking cannot be undone."
 msgstr "This takes {0} credits back off this workspace straight away. Revoking cannot be undone."
+
+#. js-lingui-id: dIDcn8
+#: src/modules/activities/tasks/components/TaskRecordDeleteButton.tsx
+msgid "This task will be moved to trash."
+msgstr "This task will be moved to trash."
 
 #. js-lingui-id: MMGDfe
 #: src/modules/settings/admin-panel/config-variables/components/ConfigVariableHelpText.tsx

@@ -11,7 +11,7 @@ import { useContext } from 'react';
 import { OverflowingTextWithTooltip } from 'twenty-ui/surfaces';
 import { themeCssVariables } from 'twenty-ui/theme-constants';
 
-const StyledDiv = styled.div`
+const StyledDiv = styled.div<{ multiline: boolean }>`
   align-items: center;
   background: inherit;
   border: none;
@@ -20,7 +20,7 @@ const StyledDiv = styled.div`
   color: ${themeCssVariables.font.color.primary};
   cursor: pointer;
   display: flex;
-  height: 24px;
+  height: ${({ multiline }) => (multiline ? '36px' : '24px')};
   justify-content: center;
   overflow: hidden;
   padding: ${themeCssVariables.spacing[0]} 5px;
@@ -33,10 +33,22 @@ const StyledEmptyText = styled.div`
   color: ${themeCssVariables.font.color.tertiary};
 `;
 
+const StyledMultilineText = styled.span`
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  line-height: 18px;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+  white-space: normal;
+`;
+
 export const RecordTitleCellSingleTextDisplayMode = ({
   containerType,
+  multiline = false,
 }: {
   containerType: RecordTitleCellContainerType;
+  multiline?: boolean;
 }) => {
   const { recordId, fieldDefinition } = useContext(FieldContext);
 
@@ -49,6 +61,7 @@ export const RecordTitleCellSingleTextDisplayMode = ({
 
   return (
     <StyledDiv
+      multiline={multiline}
       onClick={() => {
         openRecordTitleCell({
           recordId,
@@ -63,6 +76,8 @@ export const RecordTitleCellSingleTextDisplayMode = ({
     >
       {isEmpty ? (
         <StyledEmptyText>{t`Untitled`}</StyledEmptyText>
+      ) : multiline ? (
+        <StyledMultilineText>{fieldValue}</StyledMultilineText>
       ) : (
         <OverflowingTextWithTooltip text={fieldValue} />
       )}

@@ -6675,6 +6675,13 @@ msgstr "Διαγραφή ρόλου μόνιμα"
 msgid "Delete Skill"
 msgstr "Διαγραφή δεξιότητας"
 
+#. js-lingui-id: qiaHuj
+#: src/modules/activities/tasks/components/TaskRecordDeleteButton.tsx
+#: src/modules/activities/tasks/components/TaskRecordDeleteButton.tsx
+#: src/modules/activities/tasks/components/TaskRecordDeleteButton.tsx
+msgid "Delete task"
+msgstr ""
+
 #. js-lingui-id: DgHnjS
 #: src/pages/settings/ai/components/SettingsAgentSettingsTab.tsx
 msgid "Delete this agent"
@@ -6694,6 +6701,11 @@ msgstr "Διαγραφή αυτής της ενσωμάτωσης"
 #: src/modules/settings/roles/role-settings/components/SettingsRoleSettings.tsx
 msgid "Delete this role and assign a new role to its members"
 msgstr "Διαγράψτε αυτόν το ρόλο και αναθέστε έναν νέο ρόλο στα μέλη του"
+
+#. js-lingui-id: R4twK2
+#: src/modules/activities/tasks/components/TaskRecordDeleteButton.tsx
+msgid "Delete this task?"
+msgstr ""
 
 #. js-lingui-id: UvEQr6
 #: src/pages/settings/ai/SettingsToolDetail.tsx
@@ -8759,6 +8771,11 @@ msgstr "Αποτυχία διαγραφής εργασιών. Παρακαλώ �
 #: src/pages/settings/ai/components/SettingsAgentSkillsTab.tsx
 msgid "Failed to delete skill"
 msgstr "Αποτυχία διαγραφής δεξιότητας"
+
+#. js-lingui-id: +OEiMC
+#: src/modules/activities/tasks/components/TaskRecordDeleteButton.tsx
+msgid "Failed to delete task"
+msgstr ""
 
 #. js-lingui-id: AUprM8
 #: src/pages/settings/ai/SettingsToolDetail.tsx
@@ -20077,6 +20094,11 @@ msgstr "Αυτός ο υποτομέας είναι δεσμευμένος"
 #: src/modules/settings/admin-panel/components/SettingsAdminWorkspaceCreditGrantsTable.tsx
 msgid "This takes {0} credits back off this workspace straight away. Revoking cannot be undone."
 msgstr "Αυτό αφαιρεί αμέσως {0} πιστώσεις από αυτόν τον χώρο εργασίας. Η ανάκληση δεν μπορεί να αναιρεθεί."
+
+#. js-lingui-id: dIDcn8
+#: src/modules/activities/tasks/components/TaskRecordDeleteButton.tsx
+msgid "This task will be moved to trash."
+msgstr ""
 
 #. js-lingui-id: MMGDfe
 #: src/modules/settings/admin-panel/config-variables/components/ConfigVariableHelpText.tsx
